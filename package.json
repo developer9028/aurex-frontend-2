@@ -7,10 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && netlify deploy --prod --dir=dist --site=2a264fe8-7e80-4cfa-9d99-115b9afa9c0b"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
+    "lightswind": "^3.1.18",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router": "^7.9.6",

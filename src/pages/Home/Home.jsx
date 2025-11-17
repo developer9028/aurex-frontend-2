@@ -1,9 +1,12 @@
 import React from 'react';
+import { BorderBeam } from "../../components/lightswind/border-beam";
+import Banner from './Banner';
+
 
 const Home = () => {
     return (
-        <div className='min-h-screen flex justify-center items-center text-5xl font-bold bg-black text-white'>
-            Coming Soon...
+        <div>
+            <Banner />
         </div>
     );
 };
