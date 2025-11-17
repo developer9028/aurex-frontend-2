@@ -4,3 +4,4 @@
 - React
 - React Router
 - Tailwind CSS
+- Lightswind Ui

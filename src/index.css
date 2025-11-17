@@ -1,1 +1,132 @@
 @import "tailwindcss";
+@plugin 'lightswind/plugin';
+
+/* inter */
+@font-face {
+  font-family: "inter-100";
+  src: url("./assets/fonts/inter/Inter-Thin.ttf");
+}
+@font-face {
+  font-family: "inter-200";
+  src: url("./assets/fonts/inter/Inter-ExtraLight.ttf");
+}
+@font-face {
+  font-family: "inter-300";
+  src: url("./assets/fonts/inter/Inter-Light.ttf");
+}
+@font-face {
+  font-family: "inter-400";
+  src: url("./assets/fonts/inter/Inter-Regular.ttf");
+}
+@font-face {
+  font-family: "inter-500";
+  src: url("./assets/fonts/inter/Inter-Medium.ttf");
+}
+@font-face {
+  font-family: "inter-600";
+  src: url("./assets/fonts/inter/Inter-SemiBold.ttf");
+}
+@font-face {
+  font-family: "inter-700";
+  src: url("./assets/fonts/inter/Inter-Bold.ttf");
+}
+@font-face {
+  font-family: "inter-800";
+  src: url("./assets/fonts/inter/Inter-ExtraBold.ttf");
+}
+@font-face {
+  font-family: "inter-900";
+  src: url("./assets/fonts/inter/Inter-Black.ttf");
+}
+
+/* sofia-sans */
+@font-face {
+  font-family: "sofia-sans-100";
+  src: url("./assets/fonts/sofia-sans/SofiaSans-Thin.ttf");
+}
+@font-face {
+  font-family: "sofia-sans-200";
+  src: url("./assets/fonts/sofia-sans/SofiaSans-ExtraLight.ttf");
+}
+@font-face {
+  font-family: "sofia-sans-300";
+  src: url("./assets/fonts/sofia-sans/SofiaSans-Light.ttf");
+}
+@font-face {
+  font-family: "sofia-sans-400";
+  src: url("./assets/fonts/sofia-sans/SofiaSans-Regular.ttf");
+}
+@font-face {
+  font-family: "sofia-sans-500";
+  src: url("./assets/fonts/sofia-sans/SofiaSans-Medium.ttf");
+}
+@font-face {
+  font-family: "sofia-sans-600";
+  src: url("./assets/fonts/sofia-sans/SofiaSans-SemiBold.ttf");
+}
+@font-face {
+  font-family: "sofia-sans-700";
+  src: url("./assets/fonts/sofia-sans/SofiaSans-Bold.ttf");
+}
+@font-face {
+  font-family: "sofia-sans-800";
+  src: url("./assets/fonts/sofia-sans/SofiaSans-ExtraBold.ttf");
+}
+@font-face {
+  font-family: "sofia-sans-900";
+  src: url("./assets/fonts/sofia-sans/SofiaSans-Black.ttf");
+}
+
+@theme {
+  /* colors */
+  --color-primary: #F2BE35;
+  --color-secondary: #4b5563;
+  --color-info: #06b6d4;
+  --color-warning: #eab308;
+  --color-error: #dc2626;
+  --color-success: #16a34a;
+
+  --color-text-primary: var(--color-primary);
+  --color-text-secondary: var(--color-secondary);
+  --color-text-info: var(--color-info);
+  --color-text-warning: var(--color-warning);
+  --color-text-error: var(--color-error);
+  --color-text-success: var(--color-success);
+
+  --color-bg-primary: var(--color-primary);
+  --color-bg-secondary: var(--color-secondary);
+  --color-bg-info: var(--color-info);
+  --color-bg-warning: var(--color-warning);
+  --color-bg-error: var(--color-error);
+  --color-bg-success: var(--color-success);
+
+  --color-border-primary: var(--color-primary);
+  --color-border-secondary: var(--color-secondary);
+  --color-border-info: var(--color-info);
+  --color-border-warning: var(--color-warning);
+  --color-border-error: var(--color-error);
+  --color-border-success: var(--color-success);
+
+
+  /* inter */
+  --font-thin: "inter-100", sans-serif;
+  --font-extralight: "inter-200", sans-serif;
+  --font-light: "inter-300", sans-serif;
+  --font-normal: "inter-400", sans-serif;
+  --font-medium: "inter-500", sans-serif;
+  --font-semibold: "inter-600", sans-serif;
+  --font-bold: "inter-700", sans-serif;
+  --font-extrabold: "inter-800", sans-serif;
+  --font-black: "inter-900", sans-serif;
+
+  /* sofia-sans */
+  --font-sofia-thin: "sofia-sans-100", sans-serif;
+  --font-sofia-extralight: "sofia-sans-200", sans-serif;
+  --font-sofia-light: "sofia-sans-300", sans-serif;
+  --font-sofia-normal: "sofia-sans-400", sans-serif;
+  --font-sofia-medium: "sofia-sans-500", sans-serif;
+  --font-sofia-semibold: "sofia-sans-600", sans-serif;
+  --font-sofia-bold: "sofia-sans-700", sans-serif;
+  --font-sofia-extrabold: "sofia-sans-800", sans-serif;
+  --font-sofia-black: "sofia-sans-900", sans-serif;
+}
