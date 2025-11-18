@@ -1,7 +1,6 @@
 import React from 'react';
 import OutlineBtn from '../../components/btn/OutlineBtn';
 import { menuData } from './menuData';
-import { Link } from 'react-router';
 import logoImg from '../../assets/images/full-logo.png'
 import SingleMenu from './SingleMenu';
 
@@ -15,7 +14,7 @@ const Navbar = () => {
                         <img
                             src={logoImg}
                             alt=""
-                            className='h-[30px] lg:h-[50px] object-contain'
+                            className='size-[50px] lg:size-[60px] object-contain'
                         />
                     </div>
 

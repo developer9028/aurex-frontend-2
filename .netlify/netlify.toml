@@ -7,7 +7,7 @@ redirects = []
 [functions."*"]
 
 [build]
-publish = "/Users/mahfuzmoyeen/WorkPlace/BlockWhizz/oreon/dist"
+publish = "/Users/mahfuzmoyeen/WorkPlace/BlockWhizz/aurex/dist"
 publishOrigin = "ui"
 commandOrigin = "ui"
 command = "bun run build"
