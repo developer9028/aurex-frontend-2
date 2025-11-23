@@ -3,14 +3,20 @@ import { BorderBeam } from "../../components/lightswind/border-beam";
 import Banner from './Banner';
 import OurVisionAndMission from './OurVisionAndMission';
 import Ecosystem from './Ecosystem';
+import Roadmap from './Roadmap';
+import Tokenomics from './Tokenomics';
+import Faq from './Faq';
 
 
 const Home = () => {
     return (
-        <div className='mb-20'>
+        <div className='mb-30'>
             <Banner />
             <OurVisionAndMission />
             <Ecosystem />
+            <Roadmap />
+            <Tokenomics />
+            <Faq />
         </div>
     );
 };

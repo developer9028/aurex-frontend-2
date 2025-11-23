@@ -9,6 +9,7 @@ import {
 import { cn } from "../lib/utils";
 import { Card, CardContent } from "./card";
 import { Calendar } from "lucide-react";
+import scrollIcon from '../../assets/images/roadmap/scrol-licon.png'
 
 export interface TimelineEvent {
   id?: string;
@@ -123,8 +124,8 @@ export const ScrollTimeline = ({
       animationOrder === "simultaneous"
         ? 0
         : animationOrder === "staggered"
-        ? index * 0.2
-        : index * 0.3;
+          ? index * 0.2
+          : index * 0.3;
 
     const initialStates = {
       fade: { opacity: 0, y: 20 },
@@ -133,10 +134,10 @@ export const ScrollTimeline = ({
           cardAlignment === "left"
             ? -100
             : cardAlignment === "right"
-            ? 100
-            : index % 2 === 0
-            ? -100
-            : 100,
+              ? 100
+              : index % 2 === 0
+                ? -100
+                : 100,
         opacity: 0,
       },
       scale: { scale: 0.8, opacity: 0 },
@@ -203,8 +204,8 @@ export const ScrollTimeline = ({
           ? "lg:mr-[calc(50%+20px)]"
           : "lg:ml-[calc(50%+20px)]"
         : cardAlignment === "left"
-        ? "lg:mr-auto lg:ml-0"
-        : "lg:ml-auto lg:mr-0";
+          ? "lg:mr-auto lg:ml-0"
+          : "lg:ml-auto lg:mr-0";
     const perspectiveClass = perspective
       ? "transform transition-transform hover:rotate-y-1 hover:rotate-x-1"
       : "";
@@ -254,7 +255,7 @@ export const ScrollTimeline = ({
                   transform: "translateX(-50%)",
                   borderRadius:
                     progressLineCap === "round" ? "9999px" : "0px",
-                  background: `linear-gradient(to bottom, #22d3ee, #6366f1, #a855f7)`,
+                  background: `#D1AA43`,
                   // Enhanced shadow for a constant glow effect along the path
                   boxShadow: `
                     0 0 15px rgba(99,102,241,0.5),
@@ -276,12 +277,12 @@ export const ScrollTimeline = ({
                   className="w-5 h-5 rounded-full" // Size of the comet core
                   style={{
                     background:
-                      "radial-gradient(circle, rgba(168,85,247,0.8) 0%, rgba(99,102,241,0.5) 40%, rgba(34,211,238,0) 70%)",
+                      "#D1AA43",
                     // Intense, layered glow effect for the comet
                     boxShadow: `
-                      0 0 15px 4px rgba(168, 85, 247, 0.6),
-                      0 0 25px 8px rgba(99, 102, 241, 0.4),
-                      0 0 40px 15px rgba(34, 211, 238, 0.2)
+                      0 0 15px 4px #D1AA4366,
+                      0 0 25px #D1AA4355,
+                      0 0 40px #D1AA431a
                     `,
                   }}
                   animate={{
@@ -319,8 +320,8 @@ export const ScrollTimeline = ({
                         ? "lg:justify-start"
                         : "lg:flex-row-reverse lg:justify-start"
                       : cardAlignment === "left"
-                      ? "lg:justify-start"
-                      : "lg:flex-row-reverse lg:justify-start"
+                        ? "lg:justify-start"
+                        : "lg:flex-row-reverse lg:justify-start"
                   )}
                 >
                   <div
@@ -330,22 +331,12 @@ export const ScrollTimeline = ({
                     )}
                   >
                     <motion.div
-                      className={cn(
-                        "w-6 h-6 rounded-full border-4 bg-background flex items-center justify-center",
-                        index <= activeIndex
-                          ? "border-primary"
-                          : "border bg-card"
-                      )}
+                      className={cn("bg-transparent")}
                       animate={
                         index <= activeIndex
                           ? {
-                              scale: [1, 1.3, 1],
-                              boxShadow: [
-                                "0 0 0px rgba(99,102,241,0)",
-                                "0 0 12px rgba(99,102,241,0.6)",
-                                "0 0 0px rgba(99,102,241,0)",
-                              ],
-                            }
+                            scale: [1, 1.3, 1],
+                          }
                           : {}
                       }
                       transition={{
@@ -354,7 +345,12 @@ export const ScrollTimeline = ({
                         repeatDelay: 4,
                         ease: "easeInOut",
                       }}
-                    />
+                    >
+                      <img
+                        src={scrollIcon}
+                        className="size-[60px] object-contain"
+                      />
+                    </motion.div>
                   </div>
                   <motion.div
                     className={cn(
@@ -367,40 +363,30 @@ export const ScrollTimeline = ({
                     viewport={{ once: false, margin: "-100px" }}
                     style={parallaxIntensity > 0 ? { y: yOffset } : undefined}
                   >
-                    <Card className="bg-background border">
-                      <CardContent className="p-6">
-                        {dateFormat === "badge" ? (
-                          <div className="flex items-center mb-2">
-                            {event.icon || (
-                              <Calendar className="h-4 w-4 mr-2 text-primary" />
-                            )}
-                            <span
-                              className={cn(
-                                "text-sm font-bold",
-                                event.color
-                                  ? `text-${event.color}`
-                                  : "text-primary"
-                              )}
+                    <Card className="border bg-[#070707]">
+                      <CardContent className="p-6 flex items-center justify-between gap-5">
+                        <div>
+                          <h3 className="text-[24px] font-bold text-[#F2BE35]">
+                            {event.title}
+                          </h3>
+                          <ul className="mt-4 flex flex-col gap-2">
+                            {event?.point?.map(p => <li
+                              key={p?.id}
+                              className="flex items-center gap-2"
+
                             >
-                              {event.year}
-                            </span>
-                          </div>
-                        ) : (
-                          <p className="text-lg font-bold text-primary mb-2">
-                            {event.year}
-                          </p>
-                        )}
-                        <h3 className="text-xl font-bold mb-1">
-                          {event.title}
-                        </h3>
-                        {event.subtitle && (
-                          <p className="text-muted-foreground font-medium mb-2">
-                            {event.subtitle}
-                          </p>
-                        )}
-                        <p className="text-muted-foreground">
-                          {event.description}
-                        </p>
+                              <div className="size-[5px] bg-[#B2B4B6] rounded-full" />
+                              <p className="text-[#B2B4B6] text-[16px] font-normal">
+                                {p}
+                              </p>
+                            </li>)}
+                          </ul>
+                        </div>
+                        <div>
+                          <img src={event?.photo} alt=""
+                            className="size-[140px]"
+                          />
+                        </div>
                       </CardContent>
                     </Card>
                   </motion.div>

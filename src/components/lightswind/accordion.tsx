@@ -65,12 +65,15 @@ interface AccordionItemProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
   ({ className, value, disabled = false, children, ...props }, ref) => {
+    const context = React.useContext(AccordionContext);
+    const isOpen = context?.value.includes(value) ?? false;
+    
     return (
       <AccordionItemContext.Provider value={{ value }}>
         <div
           ref={ref}
           className={cn("border-b   text-black dark:text-white", className)}
-          data-state={disabled ? "disabled" : undefined}
+          data-state={disabled ? "disabled" : isOpen ? "open" : "closed"}
           data-value={value}
           {...props}
         >
