@@ -2,20 +2,26 @@ import React from 'react';
 import ourVisionImg from '../../assets/images/our-vission.png'
 import ourMissionImg from '../../assets/images/our-mission.png'
 import LightTitle from '../../components/LightTitle';
+import { useScrollAnimation } from '../../components/hooks/use-scroll-animation';
 
 const OurVisionAndMission = () => {
+    const visionImgRef = useScrollAnimation('fadeLeft', { duration: 1.2 });
+    const visionTextRef = useScrollAnimation('fadeRight', { duration: 1.2 });
+    const missionTextRef = useScrollAnimation('fadeLeft', { duration: 1.2 });
+    const missionImgRef = useScrollAnimation('fadeRight', { duration: 1.2 });
+
     return (
-        <div className='mt-20 lg:mt-40'>
+        <div id="vision-mission" className='mt-20 lg:mt-40'>
             {/* Our Vision */}
             <div className='container w-11/12 xl:w-full mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-20'>
-                <div className='w-full lg:w-5/12'>
+                <div ref={visionImgRef} className='w-full lg:w-5/12'>
                     <img
                         src={ourVisionImg}
                         alt=""
                         className='w-full  object-contain'
                     />
                 </div>
-                <div className='w-full lg:w-7/12'>
+                <div ref={visionTextRef} className='w-full lg:w-7/12'>
 
                     <LightTitle
                         title='Our Vision'
@@ -33,7 +39,7 @@ const OurVisionAndMission = () => {
             {/* Our Mission */}
             <div className='container w-11/12 xl:w-full mx-auto flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-20 mt-20 lg:mt-38'>
 
-                <div className='w-full lg:w-7/12'>
+                <div ref={missionTextRef} className='w-full lg:w-7/12'>
                     <LightTitle
                         title='Our Mission'
                     />
@@ -44,7 +50,7 @@ const OurVisionAndMission = () => {
                     </p>
                 </div>
 
-                <div className='w-full lg:w-5/12'>
+                <div ref={missionImgRef} className='w-full lg:w-5/12'>
                     <img
                         src={ourMissionImg}
                         alt=""

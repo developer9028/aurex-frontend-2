@@ -130,3 +130,14 @@
   --font-sofia-extrabold: "sofia-sans-800", sans-serif;
   --font-sofia-black: "sofia-sans-900", sans-serif;
 }
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+/* Additional smooth scrolling */
+* {
+  scroll-behavior: smooth;
+}

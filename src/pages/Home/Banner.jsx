@@ -5,14 +5,19 @@ import bannerImg from '../../assets/images/banner/banner.png'
 import bannerBgImg from '../../assets/images/banner/banner-bg.png'
 import BannerCard from '../../components/card/BannerCard';
 import { bannerData } from '../../assets/mock/homeData';
+import { useScrollAnimation } from '../../components/hooks/use-scroll-animation';
 
 const Banner = () => {
+    const textRef = useScrollAnimation('fadeUp', { duration: 1.2 });
+    const imageRef = useScrollAnimation('scale', { duration: 1.2 });
+    const cardsRef = useScrollAnimation('fadeUp', { duration: 1, scrollTrigger: { start: 'top 95%' } });
+
     return (
-        <div className='min-h-[80vh] relative w-full'>
+        <div id="home" className='min-h-[80vh] relative w-full'>
             <div className='container w-11/12 xl:w-full mx-auto mt-8 lg:mt-16 relative z-10'>
                 <div className='flex flex-col-reverse lg:flex-row items-center justify-between gap-10'>
                     {/* text section  */}
-                    <div className='w-full lg:w-6/12'>
+                    <div ref={textRef} className='w-full lg:w-6/12'>
                         <h1 className='text-[30px] lg:text-[48px] text-white font-sofia-semibold'>
                             AI-driven <span className='text-primary'>nodes,tokenized</span> <br />
                             <span className='text-primary'>utility & NFT lab-all</span> powered <br />
@@ -31,7 +36,7 @@ const Banner = () => {
                         </div>
                     </div>
                     {/* img section  */}
-                    <div className='w-full lg:w-6/12'>
+                    <div ref={imageRef} className='w-full lg:w-6/12'>
                         <img
                             src={bannerImg}
                             alt=""
@@ -39,7 +44,7 @@ const Banner = () => {
                         />
                     </div>
                 </div>
-                <div className='mt-5 lg:mt-10 grid grid-cols-1 lg:grid-cols-5 gap-5'>
+                <div ref={cardsRef} className='mt-5 lg:mt-10 grid grid-cols-1 lg:grid-cols-5 gap-5'>
                     {bannerData.map(item => <BannerCard
                         key={item.id}
                         item={item}
