@@ -2,21 +2,28 @@ import React from 'react';
 import Title from '../../components/Title.jsx';
 import chartImg from '../../assets/images/Tokenomics.png'
 import { GlowingCards, GlowingCard } from "../../components/lightswind/glowing-cards"
+import { useScrollAnimation } from '../../components/hooks/use-scroll-animation';
 
 const Tokenomics = () => {
+    const titleRef = useScrollAnimation('fade', { duration: 1 });
+    const chartRef = useScrollAnimation('fadeLeft', { duration: 1.2 });
+    const cardsRef = useScrollAnimation('fadeRight', { duration: 1.2 });
+
     return (
-        <div className='mt-20 lg:mt-40'>
+        <div id="tokenomics" className='mt-20 lg:mt-40'>
             {/* Our Vision */}
             <div className='container w-11/12 xl:w-full mx-auto'>
-                <Title
-                    title='Tokenomics'
-                />
+                <div ref={titleRef}>
+                    <Title
+                        title='Tokenomics'
+                    />
+                </div>
 
                 <div className='w-full flex flex-col lg:flex-row items-center justify-between gap-10 mt-10'>
-                    <div className='w-full lg:w-6/12'>
+                    <div ref={chartRef} className='w-full lg:w-6/12'>
                         <img src={chartImg} alt="" className='w-full object-contain' />
                     </div>
-                    <div className='w-full lg:w-6/12'>
+                    <div ref={cardsRef} className='w-full lg:w-6/12'>
                         <GlowingCards
                             enableGlow={true}
                             glowRadius={30}

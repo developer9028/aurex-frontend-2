@@ -4,11 +4,14 @@ import logoImg from '../../assets/images/logo.png'
 import sendIcon from '../../assets/images/send-icon.png'
 import { socialData } from '../../assets/mock/socialData';
 import { Link } from 'react-router';
+import { useScrollAnimation } from '../../components/hooks/use-scroll-animation';
 
 const Footer = () => {
+    const footerRef = useScrollAnimation('fadeUp', { duration: 1.2, scrollTrigger: { start: 'top 90%' } });
+
     return (
-        <footer className='py-20 relative'>
-            <footer className='container w-11/12 xl:w-full mx-auto relative z-10'>
+        <footer id="footer" className='py-20 relative'>
+            <footer ref={footerRef} className='container w-11/12 xl:w-full mx-auto relative z-10'>
                 <footer>
                     <div className='flex items-center gap-2'>
                         <img src={logoImg} alt="" className='size-[50px] object-contain' />

@@ -1,6 +1,9 @@
 import { createBrowserRouter } from "react-router";
 import Layout from "../layout/Layout";
 import Home from "../pages/Home/Home";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import Stake from "../pages/Stake/Stake";
+import Rewards from "../pages/Rewards/Rewards";
 
 const router = createBrowserRouter([
     {
@@ -10,7 +13,21 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home />
-            }
+            },
+            {
+                path: "/dashboard",
+                element: <Dashboard />
+            },
+            {
+                path: "/stake",
+                element: <Stake />
+            },
+            {
+                path: "/rewards",
+                element: <Rewards />
+            },
+
+
         ]
     },
 ]);

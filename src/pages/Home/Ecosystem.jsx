@@ -8,17 +8,23 @@ import verticalImg from '../../assets/images/vertical.png'
 import horizontalImg from '../../assets/images/horizental.png'
 import rotateImg from '../../assets/images/ecosystem-rotate-circle.png'
 import chainYellowCircleIcon from '../../assets/icons/chain-yellow.svg'
+import { useScrollAnimation } from '../../components/hooks/use-scroll-animation';
 
 const Ecosystem = () => {
+    const titleRef = useScrollAnimation('fade', { duration: 1 });
+    const cardsRef = useScrollAnimation('fadeUp', { duration: 1.2, scrollTrigger: { start: 'top 75%' } });
+
     return (
-        <div className='mt-20 lg:mt-40'>
+        <div id="ecosystem" className='mt-20 lg:mt-40'>
             {/* Our Vision */}
             <div className='container w-11/12 xl:w-full mx-auto'>
-                <Title
-                    title='Ecosystem'
-                />
+                <div ref={titleRef}>
+                    <Title
+                        title='Ecosystem'
+                    />
+                </div>
 
-                <div className='mt-12 lg:mt-20 relative'>
+                <div ref={cardsRef} className='mt-12 lg:mt-20 relative'>
 
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 w-full lg:w-8/12 mx-auto'>
 

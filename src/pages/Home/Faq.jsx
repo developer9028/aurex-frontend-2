@@ -3,17 +3,23 @@ import Title from '../../components/Title.jsx';
 import chartImg from '../../assets/images/Tokenomics.png'
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '../../components/lightswind/accordion';
 import { faqData } from '../../assets/mock/homeData.js';
+import { useScrollAnimation } from '../../components/hooks/use-scroll-animation';
 
 const Faq = () => {
+    const titleRef = useScrollAnimation('fade', { duration: 1 });
+    const faqRef = useScrollAnimation('fadeUp', { duration: 1 });
+
     return (
-        <div className='mt-20 lg:mt-40'>
+        <div id="faq" className='mt-20 lg:mt-40'>
             {/* Our Vision */}
             <div className='container w-11/12 xl:w-full mx-auto'>
-                <Title
-                    title='Faq'
-                />
+                <div ref={titleRef}>
+                    <Title
+                        title='Faq'
+                    />
+                </div>
 
-                <div className='w-full lg:w-8/12 mx-auto mt-10'>
+                <div ref={faqRef} className='w-full lg:w-8/12 mx-auto mt-10'>
                     <Accordion
                         type="single"
                         className="gap-5 flex flex-col"
