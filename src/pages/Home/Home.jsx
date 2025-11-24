@@ -10,7 +10,7 @@ import Faq from './Faq';
 
 const Home = () => {
     return (
-        <div className='mb-30'>
+        <div className='mb-30 overflow-hidden'>
             <Banner />
             <OurVisionAndMission />
             <Ecosystem />

@@ -10,6 +10,7 @@ import { cn } from "../lib/utils";
 import { Card, CardContent } from "./card";
 import { Calendar } from "lucide-react";
 import scrollIcon from '../../assets/images/roadmap/scrol-licon.png'
+import roadmapImg from '../../assets/images/roadmap-card-bg.png'
 
 export interface TimelineEvent {
   id?: string;
@@ -355,7 +356,7 @@ export const ScrollTimeline = ({
                   <motion.div
                     className={cn(
                       getCardClasses(index),
-                      "mt-12 lg:mt-0"
+                      "mt-12 lg:mt-0 border-0 bg-transparent relative z-10"
                     )}
                     variants={getCardVariants(index)}
                     initial="initial"
@@ -363,7 +364,7 @@ export const ScrollTimeline = ({
                     viewport={{ once: false, margin: "-100px" }}
                     style={parallaxIntensity > 0 ? { y: yOffset } : undefined}
                   >
-                    <Card className="border bg-[#070707]">
+                    <Card className="bg-transparent">
                       <CardContent className="p-6 flex items-center justify-between gap-5">
                         <div>
                           <h3 className="text-[24px] font-bold text-[#F2BE35]">
@@ -388,6 +389,11 @@ export const ScrollTimeline = ({
                           />
                         </div>
                       </CardContent>
+                      <img
+                        src={roadmapImg}
+                        alt=""
+                        className=" absolute top-0 left-0 w-full h-full"
+                      />
                     </Card>
                   </motion.div>
                 </div>
