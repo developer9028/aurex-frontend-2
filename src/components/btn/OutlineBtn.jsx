@@ -7,7 +7,7 @@ const OutlineBtn = ({ type, title, icon, loading, disabled, onClick, className, 
             onClick={onClick}
             disabled={disabled}
             className={` 
-                border rounded-[10px] px-4 h-[50px] flex items-center justify-center gap-2
+                border rounded-[10px] px-4 h-[50px] flex items-center justify-center gap-2 cursor-pointer
                 ${disabled ? 'border-[#eee]' : 'border-primary'} 
                 ${className}
                 `}

@@ -7,7 +7,7 @@ const PrimaryBtn = ({ type, title, icon, loading, disabled, onClick, className, 
             onClick={onClick}
             disabled={disabled}
             className={` 
-                rounded-[10px] px-4 h-[50px] flex items-center justify-center gap-2
+                rounded-[10px] px-4 h-[50px] flex items-center justify-center gap-2 cursor-pointer
                 ${disabled ? 'bg-[#eee]' : 'bg-[#D49F12]'} 
                 ${className}
                 `}

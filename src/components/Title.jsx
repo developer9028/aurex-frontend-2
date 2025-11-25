@@ -12,7 +12,7 @@ const Title = ({ title }) => {
                     className='object-contain w-full'
                 />
             </div>
-            <h1 className='text-[30px] lg:text-[48px] font-semibold text-white relative z-10'>
+            <h1 className='text-[24px] lg:text-[48px] font-semibold text-white relative z-10 whitespace-nowrap'>
                 {title}
             </h1>
             <div className='w-full lg:w-[300px]'>
