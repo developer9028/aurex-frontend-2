@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import dashboardImg from '../../assets/images/dashboard-bg.png'
 import copyImg from '../../assets/images/copy.png'
 import copyIcon from '../../assets/icons/copy.svg'
@@ -25,6 +25,9 @@ import { noteHistory } from '../../assets/mock/dashboardData';
 
 
 const Dashboard = () => {
+
+    const [tab, setTab] = useState('nodeHistory');
+
     return (
         <div className='mb-60'>
             <div className='container w-11/12 xl:w-full mx-auto mt-8 lg:mt-16 relative z-10'>
@@ -152,76 +155,81 @@ const Dashboard = () => {
 
 
                 {/* Note History  */}
-                <div className='mt-16 lg:mt-40 whitespace-nowrap'>
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead
-                                    colSpan={2}
-                                    className='text-center border-[1px] border-[#F2BE3533] bg-[#F2BE3588]'
-                                >
-                                    Note History
-                                </TableHead>
-                                <TableHead
-                                    colSpan={2}
-                                    className='text-center border-[1px] border-[#F2BE3533] bg-[#F2BE3588]'
-                                >
-                                    20 Nov 2025
-                                </TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead
-                                    className='text-white text-[14px] text-center font-sofia-normal'
-                                >
-                                    Date
-                                </TableHead>
-                                <TableHead
-                                    className='text-white text-[14px] text-center font-sofia-normal'
-                                >
-                                    Description
-                                </TableHead>
-                                <TableHead
-                                    className='text-white text-[14px] text-center font-sofia-normal'
-                                >
-                                    Token Amount
-                                </TableHead>
-                                <TableHead
-                                    className='text-white text-[14px] text-center font-sofia-normal'
-                                >
-                                    Status
-                                </TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {noteHistory.map(x => <TableRow
-                                key={x.id}
-                            >
-                                <TableCell
-                                    className='text-white text-[14px] text-center font-sofia-normal'
-                                >
-                                    {x?.date}
-                                </TableCell>
-                                <TableCell
-                                    className='text-white text-[14px] text-center font-sofia-normal'
-                                >
-                                    {x?.description}
-                                </TableCell>
-                                <TableCell
-                                    className='text-white text-[14px] text-center font-sofia-normal'
-                                >
-                                    {x?.amount}
-                                </TableCell>
-                                <TableCell
-                                    className='text-white text-[14px] text-center font-sofia-normal'
-                                >
-                                    {x?.status}
-                                </TableCell>
-                            </TableRow>)}
+                <div className='mt-16 lg:mt-40'>
+                    {/* tab  */}
+                    <div className='flex items-center gap-5 border-[1px] border-[#aaa] p-3 w-fit rounded-[10px] justify-center mx-auto'>
+                        <div className={`cursor-pointer px-4 py-2 rounded-[8px] ${tab === 'nodeHistory' ? 'bg-[#F2BE35] text-black' : 'text-white'}`}
+                            onClick={() => setTab('nodeHistory')}
+                        >
+                            <p>
+                                Node history
+                            </p>
+                        </div>
+                        <div className={`cursor-pointer px-4 py-2 rounded-[8px] ${tab === 'referralHistory' ? 'bg-[#F2BE35] text-black' : 'text-white'}`}
+                        onClick={()=>setTab('referralHistory')}
+                        >
+                            <p>
+                                Referral history
+                            </p>
+                        </div>
+                    </div>
 
-                        </TableBody>
-                    </Table>
+                    {/* table  */}
+                    <div className='whitespace-nowrap mt-5'>
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead
+                                        className='text-white text-[14px] text-center font-sofia-normal'
+                                    >
+                                        Date
+                                    </TableHead>
+                                    <TableHead
+                                        className='text-white text-[14px] text-center font-sofia-normal'
+                                    >
+                                        Description
+                                    </TableHead>
+                                    <TableHead
+                                        className='text-white text-[14px] text-center font-sofia-normal'
+                                    >
+                                        Token Amount
+                                    </TableHead>
+                                    <TableHead
+                                        className='text-white text-[14px] text-center font-sofia-normal'
+                                    >
+                                        Status
+                                    </TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                {noteHistory.map(x => <TableRow
+                                    key={x.id}
+                                >
+                                    <TableCell
+                                        className='text-white text-[14px] text-center font-sofia-normal'
+                                    >
+                                        {x?.date}
+                                    </TableCell>
+                                    <TableCell
+                                        className='text-white text-[14px] text-center font-sofia-normal'
+                                    >
+                                        {x?.description}
+                                    </TableCell>
+                                    <TableCell
+                                        className='text-white text-[14px] text-center font-sofia-normal'
+                                    >
+                                        {x?.amount}
+                                    </TableCell>
+                                    <TableCell
+                                        className='text-white text-[14px] text-center font-sofia-normal'
+                                    >
+                                        {x?.status}
+                                    </TableCell>
+                                </TableRow>)}
+
+                            </TableBody>
+                        </Table>
+                    </div>
                 </div>
             </div>
         </div>
