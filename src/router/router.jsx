@@ -8,7 +8,7 @@ import NodeSale from "../pages/NodeSale/NodeSale";
 import AdminLogin from "../pages/AdminLogin/AdminLogin";
 import AdminLayout from "../layout/AdminLayout";
 import AdminDashboard from "../pages/AdminDashboard/AdminDashboard";
-import AdminUsers from "../pages/AdminUsers/AdminUsers";
+import AdminUpdate from "../pages/AdminUpdate/AdminUpdate";
 
 const router = createBrowserRouter([
     {
@@ -52,8 +52,8 @@ const router = createBrowserRouter([
                 element: <AdminDashboard />
             },
             {
-                path: 'users',
-                element: <AdminUsers />
+                path: 'update',
+                element: <AdminUpdate />
             }
         ]
     }

@@ -3,11 +3,38 @@ import footerBgImg from '../../assets/images/footer-bg.png'
 import logoImg from '../../assets/images/logo.png'
 import sendIcon from '../../assets/images/send-icon.png'
 import { socialData } from '../../assets/mock/socialData';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { useScrollAnimation } from '../../components/hooks/use-scroll-animation';
 
 const Footer = () => {
     const footerRef = useScrollAnimation('fadeUp', { duration: 1.2, scrollTrigger: { start: 'top 90%' } });
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        if (location.pathname !== '/') {
+            navigate('/');
+            // Wait for navigation and DOM to update, then scroll
+            setTimeout(() => {
+                const element = document.getElementById('tokenomics');
+                if (element) {
+                    const yOffset = -100; // Offset for fixed navbar
+                    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+            }, 100);
+        } else {
+            // Already on home page, just scroll
+            const element = document.getElementById('tokenomics');
+            if (element) {
+                const yOffset = -100; // Offset for fixed navbar
+                const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }
+    };
 
     return (
         <footer id="footer" className='py-20 relative'>
@@ -34,7 +61,7 @@ const Footer = () => {
                             Subscribe to our newsletter for expert tips, industry updates, marketing insights, and exclusive offers to elevate your brand success!
                         </p>
 
-                        <div className='flex items-center gap-5 border border-white rounded-[12px] py-2 px-3 mt-5'>
+                        {/* <div className='flex items-center gap-5 border border-white rounded-[12px] py-2 px-3 mt-5'>
                             <input
                                 type="text"
                                 placeholder='Enter your email address'
@@ -45,8 +72,10 @@ const Footer = () => {
                                 alt=""
                                 className='size-[40px] object-contain cursor-pointer'
                             />
-                        </div>
+                        </div> */}
                     </div>
+
+                    <div />
 
                     {/* Explore */}
                     <div>
@@ -56,35 +85,42 @@ const Footer = () => {
 
                         <ul className='mt-5 flex flex-col gap-4'>
                             <li>
-                                <p className='text-[#E9E9E9] text-[16px] font-normal'>
+                                <Link to='/' className='text-[#E9E9E9] text-[16px] font-normal cursor-pointer hover:underline'>
                                     Home
-                                </p>
+                                </Link>
                             </li>
                             <li>
-                                <p className='text-[#E9E9E9] text-[16px] font-normal'>
+                                <Link to='/dashboard' className='text-[#E9E9E9] text-[16px] font-normal cursor-pointer hover:underline'>
                                     Dashboard
-                                </p>
+
+                                </Link>
+
                             </li>
                             <li>
-                                <p className='text-[#E9E9E9] text-[16px] font-normal'>
+                                <Link to='/stake' className='text-[#E9E9E9] text-[16px] font-normal cursor-pointer hover:underline'>
                                     Stake
-                                </p>
+                                </Link>
                             </li>
                             <li>
-                                <p className='text-[#E9E9E9] text-[16px] font-normal'>
+                                <Link to='rewards' className='text-[#E9E9E9] text-[16px] font-normal cursor-pointer hover:underline'>
                                     Rewards
-                                </p>
+                                </Link>
                             </li>
                             <li>
-                                <p className='text-[#E9E9E9] text-[16px] font-normal'>
-                                    Tokenomics
-                                </p>
+                                <a
+                                    href={`#tokenomics`}
+                                    onClick={handleClick}>
+                                    <p className='text-[#E9E9E9] text-[16px] font-normal cursor-pointer hover:underline'>
+                                        Tokenomics
+                                    </p>
+                                </a>
+
                             </li>
                         </ul>
                     </div>
 
                     {/* Support */}
-                    <div>
+                    {/* <div>
                         <h3 className='text-white text-[16px] font-semibold'>
                             Support
                         </h3>
@@ -106,7 +142,7 @@ const Footer = () => {
                                 </p>
                             </li>
                         </ul>
-                    </div>
+                    </div> */}
 
                     {/* Follow Us */}
                     <div>
