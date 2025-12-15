@@ -25,11 +25,7 @@ const AdminLayout = () => {
     }, [address]);
 
     return (<>{
-        !isConnected || address.toLowerCase() !== config.OWNER.toLowerCase() ? (
-            <div className="min-h-screen flex items-center justify-center bg-[#080808]">
-                <h2 className="text-white text-2xl">Access Denied. Please log in as Admin. <Link to="/"><u> click here to go home </u> </Link></h2>
-            </div>
-        ) :
+        address && address.toLowerCase() == config.OWNER.toLowerCase() ?
 
             <>
                 <div className="min-h-screen bg-[#080808]">
@@ -65,7 +61,11 @@ const AdminLayout = () => {
                 <ToastContainer />
             </>
     }
-    </>
+    </>: (
+        <div className="min-h-screen flex items-center justify-center bg-[#080808]">
+            <h2 className="text-white text-2xl">Access Denied. Please log in as Admin. <Link to="/"><u> click here to go home </u> </Link></h2>
+        </div>
+    )
     );
 };
 
