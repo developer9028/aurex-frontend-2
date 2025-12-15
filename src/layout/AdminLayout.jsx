@@ -27,7 +27,7 @@ const AdminLayout = () => {
     return (<>{
         address && address.toLowerCase() == config.OWNER.toLowerCase() ?
 
-            <>
+            (<>
                 <div className="min-h-screen bg-[#080808]">
                     <AdminNavbar onMobileMenuClick={handleMobileMenuClick} />
                     <div className="flex">
@@ -59,13 +59,13 @@ const AdminLayout = () => {
                 </div>
 
                 <ToastContainer />
-            </>
-    }
-    </>: (
-        <div className="min-h-screen flex items-center justify-center bg-[#080808]">
-            <h2 className="text-white text-2xl">Access Denied. Please log in as Admin. <Link to="/"><u> click here to go home </u> </Link></h2>
-        </div>
-    )
+            </>) : (
+                <div className="min-h-screen flex items-center justify-center bg-[#080808]">
+                    <h2 className="text-white text-2xl">Access Denied. Please log in as Admin. <Link to="/"><u> click here to go home </u> </Link></h2>
+                </div>
+            )
+        }
+    </>
     );
 };
 
