@@ -22,11 +22,10 @@ const AdminLayout = () => {
     useEffect(() => {
         console.log("Admin Address: ", config.OWNER);
         console.log("Current Address: ", address);
-        console.log("is owner ", address.toLowerCase() == config.OWNER.toLowerCase());
     }, [address]);
 
     return (<>{
-        address.toLowerCase() !== config.OWNER.toLowerCase() ? (
+        address && address.toLowerCase() !== config.OWNER.toLowerCase() ? (
             <div className="min-h-screen flex items-center justify-center bg-[#080808]">
                 <h2 className="text-white text-2xl">Access Denied. Please log in as Admin. <Link to="/"><u> click here to go home </u> </Link></h2>
             </div>
