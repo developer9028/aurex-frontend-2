@@ -1,15 +1,10 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router';
 import xIcon from '../../assets/icons/cross.svg'
+import { sidebarMenuData } from './sidebarmenuData';
 
 const Sidebar = ({ onClose, isMobile = false }) => {
     const location = useLocation();
-
-    const menuItems = [
-        { name: 'Dashboard', path: '/admin/dashboard', icon: '📊' },
-        { name: 'Users', path: '/admin/users', icon: '👥' },
-        // { name: 'Settings', path: '/admin/settings', icon: '⚙️' },
-    ];
 
     const isActive = (path) => location.pathname === path;
 
@@ -37,7 +32,7 @@ const Sidebar = ({ onClose, isMobile = false }) => {
                 {/* Navigation Menu */}
                 <nav className="flex-1 overflow-y-auto p-4 mt-0 lg:mt-5">
                     <ul className="space-y-2">
-                        {menuItems.map((item) => (
+                        {sidebarMenuData.map((item) => (
                             <li key={item.path}>
                                 <Link
                                     to={item.path}
@@ -51,8 +46,8 @@ const Sidebar = ({ onClose, isMobile = false }) => {
                                         }
                                     `}
                                 >
-                                    <span className="text-xl">{item.icon}</span>
-                                    <span className="text-[16px]">{item.name}</span>
+                                    <img src={item?.icon} alt="" className='size-[20px]' />
+                                    <span className="text-[16px]">{item.title}</span>
                                 </Link>
                             </li>
                         ))}

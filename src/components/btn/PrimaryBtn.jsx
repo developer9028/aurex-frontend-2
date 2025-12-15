@@ -8,7 +8,7 @@ const PrimaryBtn = ({ type, title, icon, loading, disabled, onClick, className, 
             disabled={disabled}
             className={` 
                 rounded-[10px] px-4 h-[50px] flex items-center justify-center gap-2 cursor-pointer
-                ${disabled ? 'bg-[#eee]' : 'bg-[#D49F12]'} 
+                ${disabled ? 'bg-[#eee]   ' : 'bg-[#D49F12]'} 
                 ${className}
                 `}
         >
@@ -17,7 +17,7 @@ const PrimaryBtn = ({ type, title, icon, loading, disabled, onClick, className, 
                 className={`size-[20px] ${iconClassName}`}
             />}
 
-            {title && <span className={`text-[18px] font-sofia-medium text-white ${textClassName}`}>
+            {title && <span className={`text-[18px] font-sofia-medium ${textClassName} ${disabled ? 'text-gray-400' : 'text-white'}`}>
                 {title}
             </span>}
 

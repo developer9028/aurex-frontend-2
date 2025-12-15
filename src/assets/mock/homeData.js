@@ -10,7 +10,7 @@ export const bannerData = [
     icon: blockchainIcon,
     title: "Total Supply",
     value: "1,000,000,000",
-    subText: "$OREON",
+    subText: "$AUREX",
   },
   {
     id: 2,
@@ -90,21 +90,25 @@ export const faqData = [
   {
     id: 1,
     question: "What is AUREX?",
-    answer: "OREON AI automates repetitive tasks by integrating with your existing systems and analyzing your data in real time. The AI engine identifies patterns, suggests optimizations, and runs tasks automatically, allowing you to focus on higher-level business operations."
+    answer:
+      "AUREX AI automates repetitive tasks by integrating with your existing systems and analyzing your data in real time. The AI engine identifies patterns, suggests optimizations, and runs tasks automatically, allowing you to focus on higher-level business operations.",
   },
   {
     id: 2,
-    question: "How Does OREON AI Automation Work?",
-    answer: "OREON AI connects to your tools via secure APIs and no-code connectors. It continuously monitors workflows, learns from your team’s actions, and builds intelligent automation rules. Once approved, these rules run 24/7—handling everything from data entry and report generation to customer follow-ups and inventory alerts—while giving you full visibility and control."
+    question: "How Does AUREX AI Automation Work?",
+    answer:
+      "AUREX AI connects to your tools via secure APIs and no-code connectors. It continuously monitors workflows, learns from your team’s actions, and builds intelligent automation rules. Once approved, these rules run 24/7—handling everything from data entry and report generation to customer follow-ups and inventory alerts—while giving you full visibility and control.",
   },
   {
     id: 3,
-    question: "Can I Integrate OREON AI with my current tools?",
-    answer: "Yes! OREON AI natively supports 200+ popular apps including QuickBooks, Shopify, Slack, Gmail, Google Sheets, Salesforce, HubSpot, Zapier, and many more. If your tool isn’t in our library yet, our custom API integration or webhook system lets you connect virtually any software in under 48 hours."
+    question: "Can I Integrate AUREX AI with my current tools?",
+    answer:
+      "Yes! AUREX AI natively supports 200+ popular apps including QuickBooks, Shopify, Slack, Gmail, Google Sheets, Salesforce, HubSpot, Zapier, and many more. If your tool isn’t in our library yet, our custom API integration or webhook system lets you connect virtually any software in under 48 hours.",
   },
   {
     id: 4,
-    question: "Is OREON AI Suitable For Small Business?",
-    answer: "Absolutely. OREON AI was designed with small and medium businesses in mind. There’s no need for a dedicated IT team—setup takes minutes, pricing starts at just $49/month, and you can begin automating your first process on the same day. Thousands of small businesses already save 20+ hours per week using OREON AI."
-  }
+    question: "Is AUREX AI Suitable For Small Business?",
+    answer:
+      "Absolutely. AUREX AI was designed with small and medium businesses in mind. There’s no need for a dedicated IT team—setup takes minutes, pricing starts at just $49/month, and you can begin automating your first process on the same day. Thousands of small businesses already save 20+ hours per week using AUREX AI.",
+  },
 ];
