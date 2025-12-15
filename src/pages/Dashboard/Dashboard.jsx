@@ -59,7 +59,7 @@ const Dashboard = () => {
 
   const base_url = import.meta.env.VITE_BASE_URL;
 
-  return (
+  return isConnected ? (
     <div className="mb-60">
       <div className="container w-11/12 xl:w-full mx-auto mt-8 lg:mt-16 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-5 gap-y-10">
@@ -394,6 +394,10 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+    </div>
+  ) : (
+    <div className="flex justify-center items-center h-screen">
+      <h2 className="text-white text-2xl">Please connect your wallet to view the dashboard.</h2>
     </div>
   );
 };
