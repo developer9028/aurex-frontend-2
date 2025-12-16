@@ -61,10 +61,10 @@ const AdminLayout = () => {
                 <ToastContainer />
             </>) : (
                 <div className="min-h-screen flex items-center justify-center bg-[#080808]">
-                    <h2 className="text-white text-2xl">Access Denied. Please log in as Admin. <Link to="/"><u> click here to go home </u> </Link></h2>
+                    <h2 className="text-white text-2xl">Access Denied. Please connect admin wallet. <Link to="/admin/login"><u> click here to admin Login page </u> </Link></h2>
                 </div>
             )
-        }
+    }
     </>
     );
 };
