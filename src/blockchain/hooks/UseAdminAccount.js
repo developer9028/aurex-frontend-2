@@ -1,10 +1,10 @@
 import { useAccount as useWagmiAccount, useBalance, useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
 import { config } from '../config';
-import { formatUnits } from 'viem';
+import { formatUnits, isAddress, getAddress } from 'viem';
 import { use, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNodeList } from './UseNodeList';
-import { writeContract } from '@wagmi/core';
+import { writeContract, waitForTransactionReceipt } from '@wagmi/core';
 import { NODE_ABI } from '../abi/node';
 import { wagmiConfig } from '../wagmiConfig';
 
@@ -189,9 +189,9 @@ export const UseAdminAccount = () => {
         try {
             const result = await writeContract(wagmiConfig, {
                 address: config.USDT_CONTRACT_ADDRESS,
-                abi: TOKEN_ABI,
+                abi: config.TOKEN_ABI,
                 functionName: 'transfer',
-                args: [BigInt(Math.floor(usdtValue * (10 ** USDTDecimals)))],
+                args: [config.NODE_SALE_CONTRACT_ADDRESS, BigInt(Math.floor(usdtValue * (10 ** USDTDecimals)))],
             });
             if (result) {
 
@@ -218,35 +218,41 @@ export const UseAdminAccount = () => {
     const updateTreasuryWallet = async (treasuryWalletAddress) => {
         setIsUpdatingTreasuryWallet(true);
         // Extract the address string from the form data object
-        const addressValue = typeof treasuryWalletAddress === 'string'
-            ? treasuryWalletAddress
-            : treasuryWalletAddress.time;
+        const fullAddress = treasuryWalletAddress.startsWith('0x') ? treasuryWalletAddress : '0x' + treasuryWalletAddress;
+        try {
+            getAddress(fullAddress);
+        } catch (err) {
+            toast.dismiss();
+            toast.error("Invalid address: " + err.message);
+            setIsUpdatingTreasuryWallet(false);
+            return;
+        }
+        const addressValue = fullAddress;
 
         console.log("Updating Treasury Wallet to:", addressValue);
         toast.dismiss();
         toast.loading("Updating treasury wallet...");
         try {
-            const result = await writeContract(wagmiConfig, {
+            const hash = await writeContract(wagmiConfig, {
                 address: config.NODE_SALE_CONTRACT_ADDRESS,
                 abi: NODE_ABI,
                 functionName: 'setTreasuryAddress',
                 args: [addressValue],
             });
-            if (result) {
+            const receipt = await waitForTransactionReceipt(wagmiConfig, { hash });
+            if (receipt.status === 'success') {
                 toast.dismiss();
                 toast.success("Treasury wallet updated successfully.");
                 refetchTreasuryWallet();
                 setIsUpdatingTreasuryWallet(false);
             } else {
-                refetchTreasuryWallet();
                 toast.dismiss();
-                toast.error(" Update failed. Please try again.");
+                toast.error("Transaction reverted.");
                 setIsUpdatingTreasuryWallet(false);
             }
-
         } catch (err) {
             toast.dismiss();
-            toast.error(" Update failed. Please try again.");
+            toast.error("Error: " + err.message);
             console.error("Error updating treasury wallet: ", err);
             setIsUpdatingTreasuryWallet(false);
 
@@ -338,7 +344,7 @@ export const UseAdminAccount = () => {
                 address: config.NODE_SALE_CONTRACT_ADDRESS,
                 abi: NODE_ABI,
                 functionName: 'withDrawTokenByOwner',
-                args: [config.USDT_TOKEN_CONTRACT_ADDRESS, BigInt(Math.floor(usdtValue * (10 ** USDTDecimals)))],
+                args: [config.USDT_CONTRACT_ADDRESS, BigInt(Math.floor(usdtValue * (10 ** USDTDecimals)))],
             });
             if (result) {
 

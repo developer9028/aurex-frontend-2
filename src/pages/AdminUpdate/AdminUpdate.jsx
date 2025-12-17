@@ -68,7 +68,7 @@ const AdminUpdate = () => {
                             },
                         ]}
                         onSubmit={async (value) =>
-                            await updateTreasuryWallet(value)
+                            await updateTreasuryWallet(value.Address)
                         }
                     />
 

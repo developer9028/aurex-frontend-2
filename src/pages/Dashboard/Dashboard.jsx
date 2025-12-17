@@ -315,7 +315,9 @@ const Dashboard = () => {
                     userInfo.userReferralsList.map((referral, index) => (
                       <TableRow key={referral.address || index}>
                         <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
-                          {referral?.address}
+
+                          {referral.address?.slice(0, 6)}....
+                          {referral.address?.slice(-6)}
                         </TableCell>
                         <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
                           Level {referral?.level}
@@ -335,7 +337,7 @@ const Dashboard = () => {
                 ) : tab === "nodeHistory" ? (
                   userInfo?.nodePurchaseHistory &&
                     userInfo.nodePurchaseHistory.length > 0 ? (
-                    userInfo.nodePurchaseHistory.map((x, index) => (
+                    userInfo.nodePurchaseHistory.slice().reverse().map((x, index) => (
                       <TableRow key={x.timestamp || index}>
                         <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
                           {x?.date} {x?.time}
@@ -363,7 +365,7 @@ const Dashboard = () => {
                   )
                 ) : userInfo?.referralPurchaseHistory &&
                   userInfo.referralPurchaseHistory.length > 0 ? (
-                  userInfo.referralPurchaseHistory.map((x, index) => (
+                  userInfo.referralPurchaseHistory.slice().reverse().map((x, index) => (
                     <TableRow key={x.timestamp || index}>
                       <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
                         {x?.date} {x?.time}

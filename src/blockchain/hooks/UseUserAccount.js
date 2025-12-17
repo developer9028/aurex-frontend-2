@@ -178,7 +178,7 @@ export const UseUserAccount = () => {
                 referrelRewardTokenClaimed: (userInfoData.referralReward.claimed ? Number(formatUnits(userInfoData.referralReward.claimed, ARXDecimals)) : 0),
                 referralGroupSalesRewardTokenClaimable: (userInfoData.referralGroupSalesReward.claimable ? Number(userInfoData.referralGroupSalesReward.claimable, 0) : 0),
                 referralGroupSalesRewardTokenClaimed: (userInfoData.referralGroupSalesReward.claimed ? Number(userInfoData.referralGroupSalesReward.claimed, 0) : 0),
-                totalPurchasesByReferrals: (userInfoData.totalPurchasesByReferrals ? Number(userInfoData.totalPurchasesByReferrals) : 0),
+                totalPurchasesByReferrals: (userInfoData.totalGroupSell ? Number(userInfoData.totalGroupSell) : 0),
                 totalNumberOfReferrals: (userInfoData.totalNumberOfReferrals ? Number(userInfoData.totalNumberOfReferrals) : 0),
 
             };
@@ -194,11 +194,11 @@ export const UseUserAccount = () => {
         if (userReferralListData) {
             console.log("User Referral List Data: ", userReferralListData);
             const [level1Referrals, level2Referrals] = userReferralListData;
-            let userReferralsList = level1Referrals.map(address => ({
+            let userReferralsList = level1Referrals.slice().reverse().map(address => ({
                 address: address,
                 level: 1,
             }));
-            userReferralsList = userReferralsList.concat(level2Referrals.map(address => ({
+            userReferralsList = userReferralsList.concat(level2Referrals.slice().reverse().map(address => ({
                 address: address,
                 level: 2,
             })));
