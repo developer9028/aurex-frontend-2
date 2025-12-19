@@ -192,6 +192,25 @@ export const TOKEN_ABI = [
     },
     {
         "type": "function",
+        "name": "getStakingAirdropTRX",
+        "inputs": [
+            {
+                "name": "user",
+                "type": "address",
+                "internalType": "address"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "amount",
+                "type": "uint256",
+                "internalType": "uint256"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
         "name": "name",
         "inputs": [],
         "outputs": [
@@ -813,4 +832,4 @@ export const TOKEN_ABI = [
             }
         ]
     }
-];
+]

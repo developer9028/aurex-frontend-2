@@ -16,8 +16,16 @@ export const useNodeList = () => {
 
 
     useEffect(() => {
+        if (error) {
+            console.error('Error fetching node tiers:', error);
+            // toast.error('Failed to fetch node tiers. Please try again later.');
+        }
+    }, [error]);
+
+    useEffect(() => {
 
         if (data) {
+            console.log('Raw Node Tiers Data:', data);
             const tiers = data ? data.map((tier, index) => {
                 return {
                     index,
