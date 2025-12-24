@@ -1,4 +1,4 @@
-import { useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
+import { useWriteContract, useWaitForTransactionReceipt, useReadContract } from 'wagmi';
 import { readContract } from '@wagmi/core';
 import { config } from '../config';
 import { NODE_ABI } from '../abi/node';
@@ -25,6 +25,13 @@ export const usePurchaseNode = () => {
 
     const { address, isConnected, tokenBalance } = UseUserAccount();
     const { nodeTiers } = useNodeList();
+
+    // Check if contract is paused
+    const { data: isPaused, isLoading: isPausedLoading } = useReadContract({
+        address: config.NODE_SALE_CONTRACT_ADDRESS,
+        abi: config.NODE_ABI,
+        functionName: 'paused',
+    });
 
 
 
@@ -215,5 +222,6 @@ export const usePurchaseNode = () => {
         isApprovePending,
         isApproveConfirming,
         isApproveConfirmed,
+        isPaused,
     };
 };

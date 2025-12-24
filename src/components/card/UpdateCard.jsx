@@ -20,6 +20,9 @@ const UpdateCard = ({
   isLoading,
   buttonTitle,
   inputList = [],
+  isRadio,
+  radioOptions,
+  radioTitle,
 }) => {
   const [formData, setFormData] = useState(() => {
     const initialData = {
@@ -127,6 +130,31 @@ const UpdateCard = ({
                 ))}
               </SelectContent>
             </Select>
+          </div>
+        )}
+
+        {isRadio && (
+          <div className="w-full">
+            <label className="text-[#C1C4CC] text-[14px] font-medium mb-2 block">
+              {radioTitle}
+            </label>
+            <div className="flex flex-col gap-2">
+              {radioOptions?.map((option) => (
+                <label key={option.id} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="radioGroup"
+                    value={option.value}
+                    checked={formData.select === option.value}
+                    onChange={(e) =>
+                      setFormData({ ...formData, select: e.target.value })
+                    }
+                    className="w-4 h-4 text-[#FFE476] bg-[#1A1A1A] border-[#FFE47633] focus:ring-[#FFE476] focus:ring-2"
+                  />
+                  <span className="text-[#FAFAFB] text-[14px]">{option.label}</span>
+                </label>
+              ))}
+            </div>
           </div>
         )}
 

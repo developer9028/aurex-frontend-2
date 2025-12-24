@@ -1,7 +1,15 @@
 import React from 'react';
 import UpdateCard from '../../components/card/UpdateCard';
 import { UseAdminAccount } from '../../blockchain/hooks/UseAdminAccount';
+import { useReadContract } from 'wagmi';
+import { config } from '../../blockchain/config';
 const AdminUpdate = () => {
+
+    const { data: isPaused, isLoading: isPausedLoading } = useReadContract({
+        address: config.NODE_SALE_CONTRACT_ADDRESS,
+        abi: config.NODE_ABI,
+        functionName: 'paused',
+    });
 
     const { numberOfNodeSlots,
         airdropARX,
@@ -20,7 +28,12 @@ const AdminUpdate = () => {
         isWithdrawingUSDT,
         totalUsersClaimableUSDT,
         depositUSDTToContract,
-        isDepositingUSDT
+        isDepositingUSDT,
+        pauseContract,
+        unpauseContract,
+        isPausing,
+        isUnpausing,
+        paused
 
     } = UseAdminAccount();
 
@@ -125,6 +138,20 @@ const AdminUpdate = () => {
                         onSubmit={async (value) =>
                             await withdrawUSDT(value)
                         }
+                    />
+
+                    <UpdateCard
+                        title="Pause/Unpause Contract"
+                        subtitle={isPaused ? "Contract is currently paused" : "Contract is currently unpaused"}
+                        buttonTitle={isPaused ? "Unpause Contract" : "Pause Contract"}
+                        isLoading={isPausing || isUnpausing}
+                        onSubmit={async () => {
+                            if (isPaused) {
+                                await unpauseContract();
+                            } else {
+                                await pauseContract();
+                            }
+                        }}
                     />
 
 

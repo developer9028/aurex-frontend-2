@@ -75,6 +75,13 @@ export const UseUserAccount = () => {
         enabled: !!address && isConnected,
     });
 
+    // Check if contract is paused
+    const { data: isPaused, isLoading: isPausedLoading } = useReadContract({
+        address: config.NODE_SALE_CONTRACT_ADDRESS,
+        abi: config.NODE_ABI,
+        functionName: 'paused',
+    });
+
 
 
     const claimRewardsToken = async () => {
@@ -269,6 +276,7 @@ export const UseUserAccount = () => {
         isConfirmingReferralRewards, // referral reward
         isClaimingGroupSaleBonus, // group sale bonus
         isConfirmingGroupSaleBonus, // group sale bonus
+        isPaused,
 
 
 

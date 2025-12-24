@@ -10,7 +10,7 @@ import { usePurchaseNode } from '../../blockchain/hooks/UsePurchaseNode';
 
 const NodeSaleCard = ({ item, tierIndex }) => {
 
-    const { purchaseNode, isPending, isConfirming, isConfirmed, error, count, handleIncrease, handleDecrease, isApprovePending, isApproveConfirming } = usePurchaseNode();
+    const { purchaseNode, isPending, isConfirming, isConfirmed, error, count, handleIncrease, handleDecrease, isApprovePending, isApproveConfirming, isPaused } = usePurchaseNode();
 
 
     return (
@@ -116,13 +116,14 @@ const NodeSaleCard = ({ item, tierIndex }) => {
                     <PrimaryBtn
                         onClick={() => purchaseNode(item.index, count)}
                         title={
-                            isApprovePending ? 'Approving...' :
-                                isApproveConfirming ? 'Confirming Approval...' :
-                                    isPending ? 'Processing Purchase...' :
-                                        isConfirming ? 'Confirming Purchase...' : 'Buy Node'
+                            isPaused ? 'Purchase Disabled' :
+                                isApprovePending ? 'Approving...' :
+                                    isApproveConfirming ? 'Confirming Approval...' :
+                                        isPending ? 'Processing Purchase...' :
+                                            isConfirming ? 'Confirming Purchase...' : 'Buy Node'
                         }
                         className='w-full'
-                        disabled={isPending || isConfirming || isApprovePending || isApproveConfirming}
+                        disabled={isPaused || isPending || isConfirming || isApprovePending || isApproveConfirming}
                     />
                 </div>
 

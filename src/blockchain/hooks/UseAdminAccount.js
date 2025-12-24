@@ -21,12 +21,15 @@ export const UseAdminAccount = () => {
     const [totalUsersClaimableUSDT, setTotalUsersClaimableUSDT] = useState(0);
     const [totalUsersCount, setTotalUsersCount] = useState(0);
     const [totalUSDTRaisedFromNodeSales, setTotalUSDTRaisedFromNodeSales] = useState(0);
+    const [paused, setPaused] = useState(false);
 
     const [isUpdatingTreasuryWallet, setIsUpdatingTreasuryWallet] = useState(false);
     const [isUpdatingNodeSellEndedTimestamp, setIsUpdatingNodeSellEndedTimestamp] = useState(false);
     const [isWithdrawingARX, setIsWithdrawingARX] = useState(false);
     const [isWithdrawingUSDT, setIsWithdrawingUSDT] = useState(false);
     const [isDepositingUSDT, setIsDepositingUSDT] = useState(false);
+    const [isPausing, setIsPausing] = useState(false);
+    const [isUnpausing, setIsUnpausing] = useState(false);
 
     const ARXDecimals = config.ARX_DECIMALS;
     const USDTDecimals = config.USDT_DECIMALS;
@@ -101,6 +104,14 @@ export const UseAdminAccount = () => {
         enabled: isOwner(),
     });
 
+    // Get paused state
+    const { data: pausedData, error: pausedError, isLoading: isPausedLoading, refetch: refetchPaused } = useReadContract({
+        address: config.NODE_SALE_CONTRACT_ADDRESS,
+        abi: config.NODE_ABI,
+        functionName: 'paused',
+        enabled: isOwner(),
+    });
+
 
 
     useEffect(() => {
@@ -169,6 +180,13 @@ export const UseAdminAccount = () => {
             setContractUSDTBalance(Number(formattedBalance));
         }
     }, [contractUSDTBalanceData, contractUSDTBalanceError, isContractUSDTBalanceLoading]);
+
+    useEffect(() => {
+        if (pausedData !== undefined) {
+            console.log("Paused state: ", pausedData);
+            setPaused(pausedData);
+        }
+    }, [pausedData, pausedError, isPausedLoading]);
 
 
     useEffect(() => {
@@ -366,6 +384,64 @@ export const UseAdminAccount = () => {
         }
     };
 
+    const pauseContract = async () => {
+        setIsPausing(true);
+        toast.dismiss();
+        toast.loading("Pausing contract...");
+        try {
+            const hash = await writeContract(wagmiConfig, {
+                address: config.NODE_SALE_CONTRACT_ADDRESS,
+                abi: NODE_ABI,
+                functionName: 'pause',
+            });
+            const receipt = await waitForTransactionReceipt(wagmiConfig, { hash });
+            if (receipt.status === 'success') {
+                toast.dismiss();
+                toast.success("Contract paused successfully.");
+                refetchPaused();
+                setIsPausing(false);
+            } else {
+                toast.dismiss();
+                toast.error("Pause failed.");
+                setIsPausing(false);
+            }
+        } catch (err) {
+            toast.dismiss();
+            toast.error("Pause failed: " + err.message);
+            console.error("Error pausing contract: ", err);
+            setIsPausing(false);
+        }
+    };
+
+    const unpauseContract = async () => {
+        setIsUnpausing(true);
+        toast.dismiss();
+        toast.loading("Unpausing contract...");
+        try {
+            const hash = await writeContract(wagmiConfig, {
+                address: config.NODE_SALE_CONTRACT_ADDRESS,
+                abi: NODE_ABI,
+                functionName: 'unpause',
+            });
+            const receipt = await waitForTransactionReceipt(wagmiConfig, { hash });
+            if (receipt.status === 'success') {
+                toast.dismiss();
+                toast.success("Contract unpaused successfully.");
+                refetchPaused();
+                setIsUnpausing(false);
+            } else {
+                toast.dismiss();
+                toast.error("Unpause failed.");
+                setIsUnpausing(false);
+            }
+        } catch (err) {
+            toast.dismiss();
+            toast.error("Unpause failed: " + err.message);
+            console.error("Error unpausing contract: ", err);
+            setIsUnpausing(false);
+        }
+    };
+
 
     return {
         // Account info
@@ -394,7 +470,12 @@ export const UseAdminAccount = () => {
         depositUSDTToContract,
         isDepositingUSDT,
         totalUsersCount,
-        totalUSDTRaisedFromNodeSales
+        totalUSDTRaisedFromNodeSales,
+        pauseContract,
+        unpauseContract,
+        isPausing,
+        isUnpausing,
+        paused
 
     };
 };

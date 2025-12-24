@@ -47,6 +47,7 @@ const Dashboard = () => {
     isConfirmingReferralRewards,
     isClaimingGroupSaleBonus,
     isConfirmingGroupSaleBonus,
+    isPaused,
   } = UseUserAccount();
 
   const handleCopy = (text) => {
@@ -151,6 +152,7 @@ const Dashboard = () => {
                 icon: withdrewIcon,
                 onClick: claimRewardsToken,
                 isLoading: isClaimingRewards || isConfirmingRewards,
+                isPaused: isPaused,
               }}
               isBtn
             />
@@ -191,6 +193,7 @@ const Dashboard = () => {
                 onClick: claimReferralRewardsToken,
                 isLoading:
                   isClaimingReferralRewards || isConfirmingReferralRewards,
+                isPaused: isPaused,
               }}
               isBtn
             />
@@ -230,6 +233,7 @@ const Dashboard = () => {
                 onClick: claimGroupSaleBonusToken,
                 isLoading:
                   isClaimingGroupSaleBonus || isConfirmingGroupSaleBonus,
+                isPaused: isPaused,
               }}
               isBtn
             />
