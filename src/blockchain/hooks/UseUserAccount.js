@@ -174,11 +174,12 @@ export const UseUserAccount = () => {
         if (userInfoData) {
             console.log("Raw User Info Data: ", userInfoData);
 
+
             let userData = {
                 address: userInfoData.userAddress,
                 totalNodes: userInfoData.nodeTiersOwned ? userInfoData.nodeTiersOwned.reduce((acc, value) => acc + Number(value), 0) : 0,
 
-                airdropRewardTokenClaimable: (userInfoData.airdropReward.claimable ? Number(formatUnits(userInfoData.airdropReward.claimable, ARXDecimals)) : 0),
+                airdropRewardTokenClaimable: (userInfoData.airdropReward.claimable ? Number(formatUnits(userInfoData.airdropReward.claimable, ARXDecimals)) : 0) + (userInfoData.packageARXTokens.claimable ? Number(formatUnits(userInfoData.packageARXTokens.claimable, ARXDecimals)) : 0),
                 airdropRewardTokenClaimed: (userInfoData.airdropReward.claimed ? Number(formatUnits(userInfoData.airdropReward.claimed, ARXDecimals)) : 0),
 
                 referrelRewardTokenClaimable: (userInfoData.referralReward.claimable ? Number(formatUnits(userInfoData.referralReward.claimable, ARXDecimals)) : 0),
