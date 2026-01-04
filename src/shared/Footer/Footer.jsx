@@ -31,13 +31,11 @@ const Footer = () => {
           {/* company section  */}
           <div className="lg:col-span-2 w-full lg:w-8/12">
             <p className="text-white text-[16px] font-semibold my-5">
-              Join Our AUREX AI
+             AUREX — Built on Real Assets. Powered by AI. Structured for Global Value.
             </p>
 
             <p className="text-[#C8CACC] text-[16px] font-normal">
-              Subscribe to our newsletter for expert tips, industry updates,
-              marketing insights, and exclusive offers to elevate your brand
-              success!
+            Welcome to the next evolution of hybrid asset ecosystems.
             </p>
 
             <div className="flex items-center gap-5 border border-white rounded-[12px] py-2 px-3 mt-5">

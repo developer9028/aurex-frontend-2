@@ -21,17 +21,14 @@ const Banner = () => {
         <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
           {/* text section  */}
           <div ref={textRef} className="w-full lg:w-6/12">
-            <h1 className="text-[30px] lg:text-[48px] text-white font-sofia-semibold">
-              AI-driven <span className="text-primary">nodes,tokenized</span>{" "}
+            <h1 className="text-[25px] lg:text-[35px] text-white font-sofia-semibold">
+               <span className="text-primary">AUREX The Future of Hybrid Digital Finance</span>{" "}
               <br />
-              <span className="text-primary">utility & NFT lab-all</span>{" "}
-              powered <br />
-              by $AUREX
+               Where {" "}
+              <span className="text-primary">Real Assets, AI Intelligence, and Blockchain Utility</span> come together.  
             </h1>
             <p className="mt-3 text-[16px] lg:text-[20px] text-[#FAFAFB] font-sofia-normal">
-              Join a decentralized ecosystem where AI computation meets token
-              economics.Buy tokens,run nodes,& miint AI NFTS_safely and
-              transparently.
+              AUREX introduces a next-generation ecosystem Creating a stable, long-term digital economy backed by real value.
             </p>
             <div className="flex items-center gap-5 mt-10">
               <PrimaryBtn title="Join Whitelist" />
