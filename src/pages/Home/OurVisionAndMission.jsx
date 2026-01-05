@@ -28,10 +28,7 @@ const OurVisionAndMission = () => {
                     />
 
                     <p className='mt-5 text-[#EEEEEE] text-[16px] lg:text-[18px] font-normal w-full lg:w-11/12 leading-[30px]'>
-                        Oreon AI envisions a world where artificial intelligence is no longer controlled by a few corporations. We believe in democratizing <span className='text-primary'>AI through blockchain nodes and community-driven learning models.</span>
-                        Our vision is to create an open ecosystem where researchers, developers, and creators can access powerful <span className='text-primary'>AI</span> capabilities without barriers—where every participant shares in the value they help create.
-                        <br /><br />
-                        "Building a future where intelligence belongs to everyone.
+                        AUREX envisions a financial future where AI-driven liquidity, real-world asset value, and blockchain utility operate as one unified global system. We aim to position ARX as a leading asset in the next evolution of RWA finance.
                     </p>
                 </div>
             </div>
@@ -44,9 +41,7 @@ const OurVisionAndMission = () => {
                         title='Our Mission'
                     />
                     <p className='mt-5 text-[#EEEEEE] text-[16px] lg:text-[18px] font-normal w-full lg:w-11/12 leading-[30px]'>
-                        Our mission is to connect <span className='text-primary'>AI researchers, node operators, and digital creators</span> in one unified ecosystem—where compute power fuels innovation and every contribution earns fair rewards. <br />
-                        We're building the infrastructure for decentralized AI today by deploying distributed node networks, creating accessible training <span className='text-primary'>environments, and establishing transparent</span> reward mechanisms. <br />
-                        "Empowering creators through decentralized intelligence."
+                        AUREX envisions a financial future where AI-driven liquidity, real-world asset value, and blockchain utility operate as one unified global system. <br/>We aim to position ARX as a leading asset in the next evolution of RWA finance..
                     </p>
                 </div>
 

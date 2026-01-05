@@ -6,21 +6,12 @@ import radioIcon from '../../assets/icons/radio.svg'
 import minusIcon from '../../assets/icons/minus.svg'
 import plusIcon from '../../assets/icons/plus-sign.svg'
 import PrimaryBtn from '../btn/PrimaryBtn';
+import { usePurchaseNode } from '../../blockchain/hooks/UsePurchaseNode';
 
-const NodeSaleCard = ({ item }) => {
+const NodeSaleCard = ({ item, tierIndex }) => {
 
-    const [count, setCount] = useState(1);
+    const { purchaseNode, isPending, isConfirming, isConfirmed, error, count, handleIncrease, handleDecrease, isApprovePending, isApproveConfirming, isPaused } = usePurchaseNode();
 
-
-    const handleDecrease = () => {
-        if (count > 1) {
-            setCount(count - 1);
-        }
-    };
-
-    const handleIncrease = () => {
-        setCount(count + 1);
-    };
 
     return (
         <div className="relative p-1 rounded-[10px] overflow-hidden bg-[#1B1B1B66] border border-[#FFE47666]">
@@ -100,7 +91,7 @@ const NodeSaleCard = ({ item }) => {
                     </p>
 
                     <div className='flex items-center justify-center gap-5 mt-5'>
-                        <button onClick={handleDecrease}>
+                        <button onClick={handleDecrease} disabled={isPending || isConfirming || isApprovePending || isApproveConfirming}>
                             <img
                                 src={minusIcon}
                                 alt=""
@@ -110,7 +101,7 @@ const NodeSaleCard = ({ item }) => {
                         <span className='text-white text-[24px] text-center font-medium w-[40px]'>
                             {count || 1}
                         </span>
-                        <button onClick={handleIncrease}>
+                        <button onClick={() => handleIncrease(item.index, count)} disabled={isPending || isConfirming || isApprovePending || isApproveConfirming}>
                             <img
                                 src={plusIcon}
                                 alt=""
@@ -123,10 +114,25 @@ const NodeSaleCard = ({ item }) => {
                 {/* btn  */}
                 <div className='w-full mt-5'>
                     <PrimaryBtn
-                        title='Buy Node'
+                        onClick={() => purchaseNode(item.index, count)}
+                        title={
+                            isPaused ? 'Purchase Disabled' :
+                                isApprovePending ? 'Approving...' :
+                                    isApproveConfirming ? 'Confirming Approval...' :
+                                        isPending ? 'Processing Purchase...' :
+                                            isConfirming ? 'Confirming Purchase...' : 'Buy Node'
+                        }
                         className='w-full'
+                        disabled={isPaused || isPending || isConfirming || isApprovePending || isApproveConfirming}
                     />
                 </div>
+
+                {/* Error message */}
+                {/* {error && (
+                    <div className='mt-2 text-red-500 text-sm'>
+                        {error.message || 'Purchase failed'}
+                    </div>
+                )} */}
             </div>
         </div>
 

@@ -23,12 +23,12 @@ export const menuData = [
     path: "/stake",
     hagPath: "",
   },
-  {
-    id: 5,
-    title: "Rewards",
-    path: "/rewards",
-    hagPath: "",
-  },
+  // {
+  //   id: 5,
+  //   title: "Rewards",
+  //   path: "/rewards",
+  //   hagPath: "",
+  // },
   {
     id: 6,
     title: "Tokenomics",

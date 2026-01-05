@@ -10,7 +10,7 @@ export const bannerData = [
     icon: blockchainIcon,
     title: "Total Supply",
     value: "1,000,000,000",
-    subText: "$OREON",
+    subText: "$AUREX",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ export const bannerData = [
     id: 3,
     icon: blockchainIcon,
     title: "Price",
-    value: "$0.08",
+    value: "$0.06",
     subText: "(Live)",
   },
 ];
@@ -31,35 +31,35 @@ export const bannerData = [
 export const roadmapData = [
   {
     id: 1,
-    title: "Concept & Development",
+    title: "Foundation & Development",
     photo: roadmapImg01,
     point: [
-      "Core team formation",
-      "Whitepaper v1.0 release",
-      "Smart contract development",
-      "Security audit initiation",
+      "Tokenomics finalized",
+      "Node program setup",
+      "AI Engine internal testing",
+      "Smart contract development and security audit initiation",
     ],
   },
   {
     id: 2,
-    title: "Presale & Node Sales Launch",
+    title: "Activation & Node Launch",
     photo: roadmapImg02,
     point: [
-      "Public token presale",
-      "Node tier launch",
-      "Community building",
-      "Partnership announcements",
+      "Public node tier launch",
+      "Early community expansion",
+      "Initial partnerships",
+      "AI Engine public activation",
     ],
   },
   {
     id: 3,
-    title: "Staking & NFT",
+    title: "RWA & Staking Release",
     photo: roadmapImg01,
     point: [
-      "Staking platform launch",
-      "NFT marketplace beta",
-      "Governance implementation",
-      "AI generation tools",
+      "RWA revenue integration begins",
+      "ARX staking system goes live",
+      "CTO reward system activated",
+      "Ecosystem utilities rollout",
     ],
   },
   {
@@ -68,18 +68,18 @@ export const roadmapData = [
     photo: roadmapImg03,
     point: [
       "Node network scaling",
+      "AI Engine V2 upgrade",
       "Cross-chain integration",
-      "Advanced AI models",
-      "Mobile app release",
+      "Mobile app development",
     ],
   },
   {
     id: 5,
-    title: "Ecosystem Integration",
+    title: "Ecosystem Integration & Global Growth",
     photo: roadmapImg01,
     point: [
-      "Third-party integrations",
-      "Enterprise solutions",
+      "Merchant & UCard integrations",
+      "Enterprise-level RWA solutions",
       "Global expansion",
       "DAO transition",
     ],
@@ -90,21 +90,25 @@ export const faqData = [
   {
     id: 1,
     question: "What is AUREX?",
-    answer: "OREON AI automates repetitive tasks by integrating with your existing systems and analyzing your data in real time. The AI engine identifies patterns, suggests optimizations, and runs tasks automatically, allowing you to focus on higher-level business operations."
+    answer:
+      "AUREX AI automates repetitive tasks by integrating with your existing systems and analyzing your data in real time. The AI engine identifies patterns, suggests optimizations, and runs tasks automatically, allowing you to focus on higher-level business operations.",
   },
   {
     id: 2,
-    question: "How Does OREON AI Automation Work?",
-    answer: "OREON AI connects to your tools via secure APIs and no-code connectors. It continuously monitors workflows, learns from your team’s actions, and builds intelligent automation rules. Once approved, these rules run 24/7—handling everything from data entry and report generation to customer follow-ups and inventory alerts—while giving you full visibility and control."
+    question: "How Does AUREX AI Automation Work?",
+    answer:
+      "AUREX AI connects to your tools via secure APIs and no-code connectors. It continuously monitors workflows, learns from your team’s actions, and builds intelligent automation rules. Once approved, these rules run 24/7—handling everything from data entry and report generation to customer follow-ups and inventory alerts—while giving you full visibility and control.",
   },
   {
     id: 3,
-    question: "Can I Integrate OREON AI with my current tools?",
-    answer: "Yes! OREON AI natively supports 200+ popular apps including QuickBooks, Shopify, Slack, Gmail, Google Sheets, Salesforce, HubSpot, Zapier, and many more. If your tool isn’t in our library yet, our custom API integration or webhook system lets you connect virtually any software in under 48 hours."
+    question: "Can I Integrate AUREX AI with my current tools?",
+    answer:
+      "Yes! AUREX AI natively supports 200+ popular apps including QuickBooks, Shopify, Slack, Gmail, Google Sheets, Salesforce, HubSpot, Zapier, and many more. If your tool isn’t in our library yet, our custom API integration or webhook system lets you connect virtually any software in under 48 hours.",
   },
   {
     id: 4,
-    question: "Is OREON AI Suitable For Small Business?",
-    answer: "Absolutely. OREON AI was designed with small and medium businesses in mind. There’s no need for a dedicated IT team—setup takes minutes, pricing starts at just $49/month, and you can begin automating your first process on the same day. Thousands of small businesses already save 20+ hours per week using OREON AI."
-  }
+    question: "Is AUREX AI Suitable For Small Business?",
+    answer:
+      "Absolutely. AUREX AI was designed with small and medium businesses in mind. There’s no need for a dedicated IT team—setup takes minutes, pricing starts at just $49/month, and you can begin automating your first process on the same day. Thousands of small businesses already save 20+ hours per week using AUREX AI.",
+  },
 ];

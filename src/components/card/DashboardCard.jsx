@@ -23,8 +23,10 @@ const DashboardCard = ({ isBtn, item }) => {
 
             {isBtn && <div className='mt-2 lg:mt-1 w-full'>
                 <PrimaryBtn
-                    title='Claim Now'
+                    title={item?.isLoading ? 'Claiming...' : item?.isPaused ? 'Claim Disabled' : 'Claim Now'}
                     className='w-full'
+                    onClick={item?.onClick}
+                    disabled={item?.isLoading || item?.value === 0 || item?.isPaused}
                 />
             </div>}
         </div>

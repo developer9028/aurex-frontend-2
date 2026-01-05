@@ -2,9 +2,18 @@ import React from 'react';
 import logoImg from '../../assets/images/logo.png'
 import logoutIcon from '../../assets/icons/logout.svg'
 import menuIcon from '../../assets/icons/menu.svg'
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { useDisconnect } from 'wagmi';
 
 const AdminNavbar = ({ onMobileMenuClick }) => {
+    const navigate = useNavigate();
+    const { disconnect } = useDisconnect();
+
+    const handleLogout = () => {
+        disconnect();
+        navigate('/admin/login');
+    };
+
     return (
         <div className='border-b border-[#AAD8FF1A] py-5 px-10 flex items-center justify-between bg-black/40 backdrop-blur-sm'>
             <div className='flex items-center gap-5'>
@@ -28,9 +37,9 @@ const AdminNavbar = ({ onMobileMenuClick }) => {
                 </Link>
             </div>
 
-            <Link to='/'>
+            <button onClick={handleLogout} className='cursor-pointer'>
                 <img src={logoutIcon} alt="" className='size-[30px]' />
-            </Link>
+            </button>
         </div>
     );
 };

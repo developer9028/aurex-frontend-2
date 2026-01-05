@@ -28,7 +28,7 @@ const Ecosystem = () => {
 
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 w-full lg:w-8/12 mx-auto'>
 
-                        {/* Oreon Coin */}
+                        {/*  AI Node Network */}
                         <div className='w-full h-full relative pt-[2px] pl-[2px] lg:pt-auto lg:pl-auto lg:pr-[2px] lg:pb-[2px]'>
                             <InteractiveGradient
                                 glowColor="#4ED7FA66"
@@ -46,10 +46,10 @@ const Ecosystem = () => {
                                         className='size-[40px] lg:size-[60px]'
                                     />
                                     <h3 className='mt-10 text-center text-white text-[20px] lg:text-[32px]'>
-                                        Oreon Coin
+                                        AI Node Network
                                     </h3>
                                     <p className='mt-2 text-center text-[#aaa] text-[16px] lg:text-[18px]'>
-                                        Decentralized computing power for AI workloads
+                                        Decentralized node system for rewards and token distribution.
                                     </p>
                                 </div>
                             </InteractiveGradient>
@@ -84,10 +84,10 @@ const Ecosystem = () => {
                                     className='size-[40px] lg:size-[60px]'
                                 />
                                 <h3 className='mt-10 text-center text-white text-[20px] lg:text-[32px]'>
-                                    Qreon AI Lab
+                                    ARX Utility Token
                                 </h3>
                                 <p className='mt-2 text-center text-[#aaa] text-[16px] lg:text-[18px]'>
-                                    Create and train AI Models collaboratively
+                                    Fixed-supply token for staking and ecosystem utility.
                                 </p>
                             </div>
                         </InteractiveGradient>
@@ -109,15 +109,15 @@ const Ecosystem = () => {
                                     className='size-[40px] lg:size-[60px]'
                                 />
                                 <h3 className='mt-10 text-center text-white text-[20px] lg:text-[32px]'>
-                                    Qreon NFT Hub
+                                    AI Trading Engine
                                 </h3>
                                 <p className='mt-2 text-center text-[#aaa] text-[16px] lg:text-[18px]'>
-                                    Mint and trade AI-Generated NFT artwork
+                                    AI-powered daily liquidity and performance.
                                 </p>
                             </div>
                         </InteractiveGradient>
 
-                        {/* AI Node Network */}
+                        {/* Real-World Assets (RWA) */}
                         <div className='w-full h-full relative pb-[2px] pr-[2px] lg:pb-auto lg:pr-auto lg:pt-[2px] lg:pl-[2px]'>
                             <InteractiveGradient
                                 glowColor="#4ED7FA66"
@@ -135,10 +135,10 @@ const Ecosystem = () => {
                                         className='size-[40px] lg:size-[60px]'
                                     />
                                     <h3 className='mt-10 text-center text-white text-[20px] lg:text-[32px]'>
-                                        AI Node Network
+                                        Real-World Assets (RWA)
                                     </h3>
                                     <p className='mt-2 text-center text-[#aaa] text-[16px] lg:text-[18px]'>
-                                        Decentralized computing power for AI workloads
+                                        Tokenized real assets backing ecosystem value.
                                     </p>
                                 </div>
                             </InteractiveGradient>

@@ -11,13 +11,21 @@
     "deploy": "npm run build && netlify deploy --prod --dir=dist --site=2a264fe8-7e80-4cfa-9d99-115b9afa9c0b"
   },
   "dependencies": {
+    "@metamask/sdk": "^0.34.0",
+    "@rainbow-me/rainbowkit": "^2.2.9",
     "@tailwindcss/vite": "^4.1.17",
+    "@tanstack/react-query": "^5.90.11",
+    "framer-motion": "^12.23.25",
     "gsap": "^3.13.0",
-    "lightswind": "^3.1.18",
+    "lightswind": "^3.1.20",
+    "lucide-react": "^0.555.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router": "^7.9.6",
-    "tailwindcss": "^4.1.17"
+    "react-toastify": "^11.0.5",
+    "tailwindcss": "^4.1.17",
+    "viem": "2.x",
+    "wagmi": "^3.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

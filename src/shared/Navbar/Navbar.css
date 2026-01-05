@@ -1,0 +1,16 @@
+/* Override RainbowKit ConnectButton default styles */
+.custom-connect-btn button {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    height: auto !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    color: inherit !important;
+}
+
+.custom-connect-btn button:hover {
+    background: transparent !important;
+    box-shadow: none !important;
+}

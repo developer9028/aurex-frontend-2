@@ -11,12 +11,18 @@ import {
 
 const UpdateCard = ({
   title,
+  subtitle,
   onSubmit,
   isSelect,
   selectOptions,
   selectTitle,
   placeholder,
+  isLoading,
+  buttonTitle,
   inputList = [],
+  isRadio,
+  radioOptions,
+  radioTitle,
 }) => {
   const [formData, setFormData] = useState(() => {
     const initialData = {
@@ -57,6 +63,7 @@ const UpdateCard = ({
         <h2 className="text-[#FFE476] text-[16px] lg:text-[18px] font-semibold">
           {title}
         </h2>
+        {subtitle && <div className="text-[#FFE476] text-[12px]"> {subtitle} </div>}
 
         {inputList.map((input) => (
           <div key={input.key} className="w-full">
@@ -113,11 +120,10 @@ const UpdateCard = ({
                   <SelectItem
                     key={option.id}
                     value={option.value}
-                    className={`text-[14px] hover:bg-[#FFE47622] focus:bg-[#FFE47622] cursor-pointer ${
-                      formData.select === option.value
-                        ? "text-[#FFE476] font-semibold bg-[#FFE47622]"
-                        : "text-[#FAFAFB]"
-                    }`}
+                    className={`text-[14px] hover:bg-[#FFE47622] focus:bg-[#FFE47622] cursor-pointer ${formData.select === option.value
+                      ? "text-[#FFE476] font-semibold bg-[#FFE47622]"
+                      : "text-[#FAFAFB]"
+                      }`}
                   >
                     {option.label}
                   </SelectItem>
@@ -127,11 +133,37 @@ const UpdateCard = ({
           </div>
         )}
 
+        {isRadio && (
+          <div className="w-full">
+            <label className="text-[#C1C4CC] text-[14px] font-medium mb-2 block">
+              {radioTitle}
+            </label>
+            <div className="flex flex-col gap-2">
+              {radioOptions?.map((option) => (
+                <label key={option.id} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="radioGroup"
+                    value={option.value}
+                    checked={formData.select === option.value}
+                    onChange={(e) =>
+                      setFormData({ ...formData, select: e.target.value })
+                    }
+                    className="w-4 h-4 text-[#FFE476] bg-[#1A1A1A] border-[#FFE47633] focus:ring-[#FFE476] focus:ring-2"
+                  />
+                  <span className="text-[#FAFAFB] text-[14px]">{option.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        )}
+
         <PrimaryBtn
+          disabled={!!isLoading}
           type="submit"
           className="w-full bg-[#FFE476] hover:bg-[#D49F12] transition-colors mt-auto"
           textClassName="!text-[#0A0A0A] font-semibold"
-          title="Update"
+          title={buttonTitle ? buttonTitle : "Update"}
         />
       </form>
     </div>

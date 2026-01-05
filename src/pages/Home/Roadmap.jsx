@@ -11,11 +11,11 @@ const Roadmap = () => {
 
     return (
         <div id="roadmap" className='mt-20 lg:mt-40 relative'>
-            {/* roadmap */}
+            {/* AUREX ROADMAP */}
             <div className='container w-11/12 xl:w-full mx-auto relative z-10'>
                 <div ref={titleRef}>
                     <Title
-                        title='Roadmap'
+                        title='AUREX ROADMAP'
                     />
                 </div>
 
