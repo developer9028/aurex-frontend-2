@@ -12,11 +12,11 @@ const OurVisionAndMission = () => {
 
     return (
         <div id="vision-mission" className='mt-20 lg:mt-40'>
-            {/* Our Vision */}
+            {/* Mission */}
             <div className='container w-11/12 xl:w-full mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-20'>
                 <div ref={visionImgRef} className='w-full lg:w-5/12'>
                     <img
-                        src={ourVisionImg}
+                        src={ourMissionImg}
                         alt=""
                         className='w-full  object-contain'
                     />
@@ -24,30 +24,32 @@ const OurVisionAndMission = () => {
                 <div ref={visionTextRef} className='w-full lg:w-7/12'>
 
                     <LightTitle
-                        title='Our Vision'
+                        title='Mission'
                     />
 
                     <p className='mt-5 text-[#EEEEEE] text-[16px] lg:text-[18px] font-normal w-full lg:w-11/12 leading-[30px]'>
-                        AUREX envisions a financial future where AI-driven liquidity, real-world asset value, and blockchain utility operate as one unified global system. We aim to position ARX as a leading asset in the next evolution of RWA finance.
+                        To build the world’s most trusted RWA-backed digital ecosystem — where every token is tied to real economic output and every participant benefits from transparent value creation.
                     </p>
                 </div>
             </div>
 
-            {/* Our Mission */}
+            {/* Vision */}
             <div className='container w-11/12 xl:w-full mx-auto flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-20 mt-20 lg:mt-38'>
 
                 <div ref={missionTextRef} className='w-full lg:w-7/12'>
                     <LightTitle
-                        title='Our Mission'
+                        title='Vision'
                     />
                     <p className='mt-5 text-[#EEEEEE] text-[16px] lg:text-[18px] font-normal w-full lg:w-11/12 leading-[30px]'>
-                        AUREX envisions a financial future where AI-driven liquidity, real-world asset value, and blockchain utility operate as one unified global system. <br/>We aim to position ARX as a leading asset in the next evolution of RWA finance..
+                        AUREX envisions a financial future where AI-driven liquidity, real-world asset value, and blockchain utility operate as one unified global system.
+                        <br />
+                        We aim to position ARX as a leading asset in the next evolution of RWA finance.
                     </p>
                 </div>
 
                 <div ref={missionImgRef} className='w-full lg:w-5/12'>
                     <img
-                        src={ourMissionImg}
+                        src={ourVisionImg}
                         alt=""
                         className='w-full  object-contain'
                     />
