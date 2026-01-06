@@ -4,39 +4,41 @@ import { NODE_ABI } from "./abi/node";
 const environment = import.meta.env.VITE_ENVIRONMENT || "dev";
 
 const getConfig = (environment) => {
-    console.log("Environment: ", environment);
-    if (environment === 'prod') {
-        return {
-            RPC_URL: 'https://bsc-testnet.infura.io/v3/a35f393cf0a94c6196ff69faf4816b23',
-            CHAIN: bsc,
-            CHAIN_ID: bsc.id,
-            TOKEN_ABI: TOKEN_ABI,
-            NODE_ABI: NODE_ABI,
-            OWNER: '0x3ff88b69d1762aa444c85c30c4b0b795f9c48b59',
-            NODE_SALE_CONTRACT_ADDRESS: '0xA4eXNodeSaleContractAddressProd',
-            AUREX_TOKEN_CONTRACT_ADDRESS: '0xAurexTokenContractAddressProd',
-            USDT_CONTRACT_ADDRESS: '0xUSDTContractAddressProd',
-            USDT_DECIMALS: 6,
-            USDT_SYMBOL: 'USDT',
-            ARX_DECIMALS: 18
-        }
-    } else {
-        return {
-            RPC_URL: 'https://data-seed-prebsc-1-s1.binance.org:8545',
-            CHAIN: bscTestnet,
-            CHAIN_ID: bscTestnet.id,
-            TOKEN_ABI: TOKEN_ABI,
-            NODE_ABI: NODE_ABI,
-            NODE_SALE_CONTRACT_ADDRESS: '0xE17137112Fca62c5CB2095C4CA04Caf931d26a9B',
-            AUREX_TOKEN_CONTRACT_ADDRESS: '0x26Ab9987d7Bb80436Ca59FE20230d787bad8E336',
-            OWNER: '0x71D7F36C664Bb2fE8eA895d16AF14928eB812ebB',
-            USDT_CONTRACT_ADDRESS: '0x71E53ea9f5a19A0aFB72d4fFCEBB5c0Da9c57152',
-            USDT_DECIMALS: 6,
-            USDT_SYMBOL: 'USDT',
-            ARX_DECIMALS: 18
-        }
-    }
-}
-
+  console.log("Environment: ", environment);
+  if (environment === "prod") {
+    return {
+      RPC_URL:
+        "https://bsc-mainnet.infura.io/v3/76d1fe2dcd1f4694a71aa5268eac8c8e",
+      CHAIN: bsc,
+      CHAIN_ID: bsc.id,
+      TOKEN_ABI: TOKEN_ABI,
+      NODE_ABI: NODE_ABI,
+      OWNER: "0x306bC6557BFAC07BF8cC0E1D744897Fed605ACF2",
+      NODE_SALE_CONTRACT_ADDRESS: "0x2032D1D5c1B410B43561C3C51a8BE95eF7D5399B",
+      AUREX_TOKEN_CONTRACT_ADDRESS:
+        "0x233178d3265B5F1Ae6f3F83aF8919774a13A794A",
+      USDT_CONTRACT_ADDRESS: "0x55d398326f99059fF775485246999027B3197955",
+      USDT_DECIMALS: 18,
+      USDT_SYMBOL: "USDT",
+      ARX_DECIMALS: 18,
+    };
+  } else {
+    return {
+      RPC_URL: "https://data-seed-prebsc-1-s1.binance.org:8545",
+      CHAIN: bscTestnet,
+      CHAIN_ID: bscTestnet.id,
+      TOKEN_ABI: TOKEN_ABI,
+      NODE_ABI: NODE_ABI,
+      NODE_SALE_CONTRACT_ADDRESS: "0x1C75b1f2175fa7f62951dEe8b9F1B749a7D06F1b",
+      AUREX_TOKEN_CONTRACT_ADDRESS:
+        "0x2De40C0eb034aaf05d2884eA9658088e1D9593BD",
+      OWNER: "0xd3E332619A85FBe005F847BAE0Fe6579b8795084",
+      USDT_CONTRACT_ADDRESS: "0xbDE02cF1Bc4904046633fa16beDD9b931136E8AB",
+      USDT_DECIMALS: 18,
+      USDT_SYMBOL: "USDT",
+      ARX_DECIMALS: 18,
+    };
+  }
+};
 
 export const config = getConfig(environment);
