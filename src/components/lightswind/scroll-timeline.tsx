@@ -356,7 +356,7 @@ export const ScrollTimeline = ({
                   <motion.div
                     className={cn(
                       getCardClasses(index),
-                      "mt-12 lg:mt-0 border-0 bg-transparent relative z-10"
+                      "mt-12 lg:mt-0 border-0 bg-[#000000] relative z-50"
                     )}
                     variants={getCardVariants(index)}
                     initial="initial"
@@ -365,9 +365,9 @@ export const ScrollTimeline = ({
                     style={parallaxIntensity > 0 ? { y: yOffset } : undefined}
                   >
                     <Card className="bg-transparent">
-                      <CardContent className="p-6 flex items-center justify-between gap-5">
+                      <CardContent className="px-4 py-3 lg:px-6 lg:py-6 flex items-center justify-between gap-5">
                         <div>
-                          <h3 className="text-[24px] font-bold text-[#F2BE35]">
+                          <h3 className="text-[16px] lg:text-[24px] font-bold text-[#F2BE35]">
                             {event.title}
                           </h3>
                           <ul className="mt-4 flex flex-col gap-2">
@@ -377,7 +377,7 @@ export const ScrollTimeline = ({
 
                             >
                               <div className="size-[5px] bg-[#B2B4B6] rounded-full" />
-                              <p className="text-[#B2B4B6] text-[16px] font-normal">
+                              <p className="text-[#B2B4B6] text-[14px] lg:text-[16px] font-normal">
                                 {p}
                               </p>
                             </li>)}
@@ -385,7 +385,7 @@ export const ScrollTimeline = ({
                         </div>
                         <div>
                           <img src={event?.photo} alt=""
-                            className="size-[140px]"
+                            className="size-[60px] lg:size-[140px] object-cover"
                           />
                         </div>
                       </CardContent>
