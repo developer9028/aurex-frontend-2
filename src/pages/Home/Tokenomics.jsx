@@ -32,81 +32,36 @@ const Tokenomics = () => {
                             gap="30px"
                             responsive={true}
                         >
-                            <GlowingCard
-                                glowColor="#988AFC"
+                            {[
+                                { id: 1, color: '#5974FF', percent: 65, label: 'Minting Reward' },
+                                { id: 2, color: '#6FD195', percent: 10, label: 'Node AirDrop' },
+                                { id: 3, color: '#FF8C00', percent: 10, label: 'Listing Reserve' },
+                                { id: 4, color: '#00DEFF', percent: 5, label: 'Founding Team & Advisor' },
+                                { id: 5, color: '#988AFC', percent: 5, label: 'Ecosystem and Utilites Development' },
+                                { id: 6, color: '#1F93FF', percent: 4.5, label: 'Marketing Development' },
+                                { id: 7, color: '#FF928A', percent: 0.5, label: 'Airdrop' },
+                            ].map(x => <GlowingCard
+                                key={x.id}
+                                glowColor={x.color}
                                 className="space-y-4 bg-[#10111A] border-0 rounded-[16px]"
                             >
                                 <div className='flex items-start justify-between gap-5'>
-                                    <h3 className='text-[#988AFC] text-[24px] font-medium'>
-                                        75%
+                                    <h3
+                                        className='text-[24px] font-medium'
+                                        style={{ color: x.color }}
+                                    >
+                                        {x.percent}%
                                     </h3>
-                                    <div className='bg-[#988AFC] border-[1px] size-[16px] border-[1px] rounded-full' />
+                                    <div
+                                        className='border-[1px] size-[16px] border-[1px] rounded-full'
+                                        style={{ background: x.color }}
+                                    />
                                 </div>
                                 <p className='text-[#F5F6F7] text-[20px] font-normal mt-5'>
-                                    Terms & Adviser
+                                    {x.label}
                                 </p>
-                            </GlowingCard>
+                            </GlowingCard>)}
 
-                            <GlowingCard
-                                glowColor="#07DBFA"
-                                className="space-y-4 bg-[#10111A] border-0 rounded-[16px]"
-                            >
-                                <div className='flex items-start justify-between gap-5'>
-                                    <h3 className='text-[#07DBFA] text-[24px] font-medium'>
-                                        20%
-                                    </h3>
-                                    <div className='bg-[#07DBFA] border-[1px] size-[16px] border-[1px] rounded-full' />
-                                </div>
-                                <p className='text-[#F5F6F7] text-[20px] font-normal mt-5'>
-                                    Ecosystem Development
-                                </p>
-                            </GlowingCard>
-
-
-                            <GlowingCard
-                                glowColor="#FFAE4C"
-                                className="space-y-4 bg-[#10111A] border-0 rounded-[16px]"
-                            >
-                                <div className='flex items-start justify-between gap-5'>
-                                    <h3 className='text-[#FFAE4C] text-[24px] font-medium'>
-                                        5%
-                                    </h3>
-                                    <div className='bg-[#FFAE4C] border-[1px] size-[16px] border-[1px] rounded-full' />
-                                </div>
-                                <p className='text-[#F5F6F7] text-[20px] font-normal mt-5'>
-                                    Partners
-                                </p>
-                            </GlowingCard>
-
-                            <GlowingCard
-                                glowColor="#6FD195"
-                                className="space-y-4 bg-[#10111A] border-0 rounded-[16px]"
-                            >
-                                <div className='flex items-start justify-between gap-5'>
-                                    <h3 className='text-[#6FD195] text-[24px] font-medium'>
-                                        15%
-                                    </h3>
-                                    <div className='bg-[#6FD195] border-[1px] size-[16px] border-[1px] rounded-full' />
-                                </div>
-                                <p className='text-[#F5F6F7] text-[20px] font-normal mt-5'>
-                                    Liquidity
-                                </p>
-                            </GlowingCard>
-
-                            <GlowingCard
-                                glowColor="#7086FD"
-                                className="space-y-4 bg-[#10111A] border-0 rounded-[16px]"
-                            >
-                                <div className='flex items-start justify-between gap-5'>
-                                    <h3 className='text-[#7086FD] text-[24px] font-medium'>
-                                        75%
-                                    </h3>
-                                    <div className='bg-[#7086FD] border-[1px] size-[16px] border-[1px] rounded-full' />
-                                </div>
-                                <p className='text-[#F5F6F7] text-[20px] font-normal mt-5'>
-                                    Community
-                                </p>
-                            </GlowingCard>
                         </GlowingCards>
                     </div>
                 </div>
