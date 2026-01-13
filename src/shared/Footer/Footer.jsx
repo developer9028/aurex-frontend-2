@@ -38,7 +38,7 @@ const Footer = () => {
             Welcome to the next evolution of hybrid asset ecosystems.
             </p>
 
-            <div className="flex items-center gap-5 border border-white rounded-[12px] py-2 px-3 mt-5">
+            {/* <div className="flex items-center gap-5 border border-white rounded-[12px] py-2 px-3 mt-5">
               <input
                 type="text"
                 placeholder="Enter your email address"
@@ -49,7 +49,7 @@ const Footer = () => {
                 alt=""
                 className="size-[40px] object-contain cursor-pointer"
               />
-            </div>
+            </div> */}
           </div>
 
           {/* Explore */}
@@ -82,7 +82,7 @@ const Footer = () => {
           </div>
 
           {/* Support */}
-          <div>
+          {/* <div>
             <h3 className="text-white text-[16px] font-semibold">Support</h3>
 
             <ul className="mt-5 flex flex-col gap-4">
@@ -102,7 +102,7 @@ const Footer = () => {
                 </p>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Follow Us */}
           <div>
