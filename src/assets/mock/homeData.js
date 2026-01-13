@@ -101,14 +101,14 @@ export const faqData = [
   },
   {
     id: 3,
-    question: "Can I Integrate AUREX AI with my current tools?",
+    question: "How is AUREX backed by Real-World Assets (RWA)?",
     answer:
-      "Yes! AUREX AI natively supports 200+ popular apps including QuickBooks, Shopify, Slack, Gmail, Google Sheets, Salesforce, HubSpot, Zapier, and many more. If your tool isn’t in our library yet, our custom API integration or webhook system lets you connect virtually any software in under 48 hours.",
+      "AUREX operates on an asset-backed model where ecosystem value is linked to real commodities, real revenue streams, and real economic activity. Through on-chain verification and tokenized utility, ARX tokens and node rewards are supported by real-world asset flows, helping to reduce volatility and enhance long-term sustainability compared to purely speculative crypto models.",
   },
   {
     id: 4,
-    question: "Is AUREX AI Suitable For Small Business?",
+    question: "What is an AUREX Node and how does it generate value?",
     answer:
-      "Absolutely. AUREX AI was designed with small and medium businesses in mind. There’s no need for a dedicated IT team—setup takes minutes, pricing starts at just $49/month, and you can begin automating your first process on the same day. Thousands of small businesses already save 20+ hours per week using AUREX AI.",
+      "An AUREX Node is a participation unit within the ecosystem that provides access to ARX token allocation, airdrop rewards, and daily staking returns powered by AUREX’s AI trading and RWA revenue model. Node holders benefit from structured reward caps, early liquidity advantages, and long-term ecosystem growth, with higher-tier nodes unlocking additional incentives such as CTO profit sharing.",
   },
 ];

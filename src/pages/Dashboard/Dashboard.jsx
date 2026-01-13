@@ -78,21 +78,31 @@ const Dashboard = () => {
               </h2>
               <div
                 className="mt-5 border-[1px] border-[#F2BE35] rounded-[16px] py-4 px-6 flex items-center gap-5 justify-between cursor-pointer"
-                onClick={() => handleCopy(` ${base_url}?ref=${userInfo.address}`)}
+                onClick={() =>
+                  handleCopy(` ${base_url}?ref=${userInfo.address}`)
+                }
               >
                 <p className="text-white text-[16px] lg:text-[20px] font-sofia-normal">
-                  {userInfo.address !== "0x0000000000000000000000000000000000000000" ?
-                    <>{base_url}?ref={userInfo.address?.slice(0, 6)}....
-                      {userInfo.address?.slice(-4)}</> : "You needs to purchase a node first"
-                  }
-                </p>
-                {userInfo.address !== "0x0000000000000000000000000000000000000000" && (<div>
-                  {isCopy ? (
-                    <img src={tickIcon} alt="" className="size-[24px]" />
+                  {userInfo.address !==
+                  "0x0000000000000000000000000000000000000000" ? (
+                    <>
+                      {base_url}?ref={userInfo.address?.slice(0, 6)}....
+                      {userInfo.address?.slice(-4)}
+                    </>
                   ) : (
-                    <img src={copyImg} alt="" />
+                    "You needs to purchase a node first"
                   )}
-                </div>)}
+                </p>
+                {userInfo.address !==
+                  "0x0000000000000000000000000000000000000000" && (
+                  <div>
+                    {isCopy ? (
+                      <img src={tickIcon} alt="" className="size-[24px]" />
+                    ) : (
+                      <img src={copyImg} alt="" />
+                    )}
+                  </div>
+                )}
               </div>
               {/* <div className='mt-5 flex flex-col lg:flex-row gap-5'>
                                 <PrimaryBtn
@@ -110,10 +120,12 @@ const Dashboard = () => {
                                 </div>
                             </div> */}
               <div className="mt-5">
+                {/*
                 <p className="text-white text-[12px] lg:text-[16px] font-sofia-normal text-center">
                   Earn <span className="text-[#F2BE35]">10% Bonus</span> from
                   every successful referral
                 </p>
+                */}
               </div>
             </div>
           </div>
@@ -245,26 +257,27 @@ const Dashboard = () => {
           {/* tab  */}
           <div className="flex items-center gap-5 border-[1px] border-[#aaa] p-3 w-fit rounded-[10px] justify-center mx-auto">
             <div
-              className={`cursor-pointer px-4 py-2 rounded-[8px] ${tab === "nodeHistory" ? "bg-[#F2BE35] text-black" : "text-white"
-                }`}
+              className={`cursor-pointer px-4 py-2 rounded-[8px] ${
+                tab === "nodeHistory" ? "bg-[#F2BE35] text-black" : "text-white"
+              }`}
               onClick={() => setTab("nodeHistory")}
             >
               <p>Node history</p>
             </div>
             <div
-              className={`cursor-pointer px-4 py-2 rounded-[8px] ${tab === "referralHistory"
-                ? "bg-[#F2BE35] text-black"
-                : "text-white"
-                }`}
+              className={`cursor-pointer px-4 py-2 rounded-[8px] ${
+                tab === "referralHistory"
+                  ? "bg-[#F2BE35] text-black"
+                  : "text-white"
+              }`}
               onClick={() => setTab("referralHistory")}
             >
               <p>Referral history</p>
             </div>
             <div
-              className={`cursor-pointer px-4 py-2 rounded-[8px] ${tab === "referrals"
-                ? "bg-[#F2BE35] text-black"
-                : "text-white"
-                }`}
+              className={`cursor-pointer px-4 py-2 rounded-[8px] ${
+                tab === "referrals" ? "bg-[#F2BE35] text-black" : "text-white"
+              }`}
               onClick={() => setTab("referrals")}
             >
               <p>Referrals</p>
@@ -315,11 +328,10 @@ const Dashboard = () => {
                   </TableRow>
                 ) : tab === "referrals" ? (
                   userInfo?.userReferralsList &&
-                    userInfo.userReferralsList.length > 0 ? (
+                  userInfo.userReferralsList.length > 0 ? (
                     userInfo.userReferralsList.map((referral, index) => (
                       <TableRow key={referral.address || index}>
                         <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
-
                           {referral.address?.slice(0, 6)}....
                           {referral.address?.slice(-6)}
                         </TableCell>
@@ -340,23 +352,26 @@ const Dashboard = () => {
                   )
                 ) : tab === "nodeHistory" ? (
                   userInfo?.nodePurchaseHistory &&
-                    userInfo.nodePurchaseHistory.length > 0 ? (
-                    userInfo.nodePurchaseHistory.slice().reverse().map((x, index) => (
-                      <TableRow key={x.timestamp || index}>
-                        <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
-                          {x?.date} {x?.time}
-                        </TableCell>
-                        <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
-                          {x?.description}
-                        </TableCell>
-                        <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
-                          {x?.tokenAmount} USDT
-                        </TableCell>
-                        <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
-                          {x?.status ? "Success" : "Pending"}
-                        </TableCell>
-                      </TableRow>
-                    ))
+                  userInfo.nodePurchaseHistory.length > 0 ? (
+                    userInfo.nodePurchaseHistory
+                      .slice()
+                      .reverse()
+                      .map((x, index) => (
+                        <TableRow key={x.timestamp || index}>
+                          <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
+                            {x?.date} {x?.time}
+                          </TableCell>
+                          <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
+                            {x?.description}
+                          </TableCell>
+                          <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
+                            {x?.tokenAmount} USDT
+                          </TableCell>
+                          <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
+                            {x?.status ? "Success" : "Pending"}
+                          </TableCell>
+                        </TableRow>
+                      ))
                   ) : (
                     <TableRow>
                       <TableCell
@@ -369,22 +384,25 @@ const Dashboard = () => {
                   )
                 ) : userInfo?.referralPurchaseHistory &&
                   userInfo.referralPurchaseHistory.length > 0 ? (
-                  userInfo.referralPurchaseHistory.slice().reverse().map((x, index) => (
-                    <TableRow key={x.timestamp || index}>
-                      <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
-                        {x?.date} {x?.time}
-                      </TableCell>
-                      <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
-                        {x?.description}
-                      </TableCell>
-                      <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
-                        {x?.tokenAmount} ARX
-                      </TableCell>
-                      <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
-                        {x?.status ? "Success" : "Pending"}
-                      </TableCell>
-                    </TableRow>
-                  ))
+                  userInfo.referralPurchaseHistory
+                    .slice()
+                    .reverse()
+                    .map((x, index) => (
+                      <TableRow key={x.timestamp || index}>
+                        <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
+                          {x?.date} {x?.time}
+                        </TableCell>
+                        <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
+                          {x?.description}
+                        </TableCell>
+                        <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
+                          {x?.tokenAmount} ARX
+                        </TableCell>
+                        <TableCell className="text-gray-900 text-[14px] text-center font-sofia-normal">
+                          {x?.status ? "Success" : "Pending"}
+                        </TableCell>
+                      </TableRow>
+                    ))
                 ) : (
                   <TableRow>
                     <TableCell
@@ -403,7 +421,9 @@ const Dashboard = () => {
     </div>
   ) : (
     <div className="flex justify-center items-center h-screen">
-      <h2 className="text-white text-2xl">Please connect your wallet to view the dashboard.</h2>
+      <h2 className="text-white text-2xl">
+        Please connect your wallet to view the dashboard.
+      </h2>
     </div>
   );
 };
