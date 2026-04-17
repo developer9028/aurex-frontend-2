@@ -11,16 +11,22 @@ export const menuData = [
     path: "/node-sale",
     hagPath: "",
   },
-  {
-    id: 3,
-    title: "Dashboard",
-    path: "/dashboard",
-    hagPath: "",
-  },
+  // {
+  //   id: 3,
+  //   title: "Dashboard",
+  //   path: "/dashboard",
+  //   hagPath: "",
+  // },
   {
     id: 4,
     title: "Stake",
     path: "/stake",
+    hagPath: "",
+  },
+  {
+    id: 5,
+    title: "Swap",
+    path: "/swap",
     hagPath: "",
   },
   // {

@@ -9,6 +9,7 @@ import AdminLogin from "../pages/AdminLogin/AdminLogin";
 import AdminLayout from "../layout/AdminLayout";
 import AdminDashboard from "../pages/AdminDashboard/AdminDashboard";
 import AdminUpdate from "../pages/AdminUpdate/AdminUpdate";
+import Swap from "../pages/Swap/Swap";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
             {
                 path: "/stake",
                 element: <Stake />
+            },
+            {
+                path: "/swap",
+                element: <Swap />
             },
             {
                 path: "/rewards",
