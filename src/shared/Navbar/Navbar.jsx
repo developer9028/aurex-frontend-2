@@ -6,6 +6,7 @@ import SingleMenu from "./SingleMenu";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { UseUserAccount } from "../../blockchain/hooks/UseUserAccount";
 import "./Navbar.css";
+import { Link } from "react-router";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -44,11 +45,10 @@ const Navbar = () => {
 
   return (
     <div
-      className={`transition-all duration-300 ${
-        isScrolled
-          ? "fixed top-5 lg:top-0 left-0 right-0 z-50 mt-0 py-0 lg:py-2"
-          : "mt-5"
-      }`}
+      className={`transition-all duration-300 ${isScrolled
+        ? "fixed top-5 lg:top-0 left-0 right-0 z-50 mt-0 py-0 lg:py-2"
+        : "mt-5"
+        }`}
     >
       <nav className="container w-11/12 xl:w-full mx-auto relative z-50">
         <div className="border border-[#AAD8FF1A] flex items-center justify-between gap-5 p-4 rounded-2xl bg-black/40 backdrop-blur-sm">
@@ -72,10 +72,14 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-4">
             {address ? (
               <>
-                {" "}
+                <Link to="/app/dashboard">
+                  <OutlineBtn title='Open App' />
+                </Link>
+
                 <OutlineBtn
                   title={`${Number(tokenBalance.value).toFixed(4)} USDT`}
-                />{" "}
+                />
+
                 <ConnectButton label="Connect Wallet" showBalance={false} />
               </>
             ) : (
@@ -92,36 +96,31 @@ const Navbar = () => {
             aria-label="Toggle menu"
           >
             <span
-              className={`w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
-                isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
-              }`}
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
+                }`}
             ></span>
             <span
-              className={`w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
-                isMobileMenuOpen ? "opacity-0" : "opacity-100"
-              }`}
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${isMobileMenuOpen ? "opacity-0" : "opacity-100"
+                }`}
             ></span>
             <span
-              className={`w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
-                isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
+              className={`w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+                }`}
             ></span>
           </button>
         </div>
 
         {/* Mobile Menu Overlay */}
         <div
-          className={`lg:hidden fixed inset-0 bg-black/80 backdrop-blur-md transition-all duration-500 ease-in-out ${
-            isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-          }`}
+          className={`lg:hidden fixed inset-0 bg-black/80 backdrop-blur-md transition-all duration-500 ease-in-out ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+            }`}
           style={{ top: 0, left: 0, right: 0, bottom: 0 }}
           onClick={toggleMobileMenu}
         >
           {/* Mobile Menu Content */}
           <div
-            className={`absolute top-0 right-0 w-[80%] max-w-sm h-full bg-linear-to-br from-[#8d6f23] to-[#212121] backdrop-blur-xl border-l border-[#AAD8FF1A] transition-transform duration-500 ease-in-out ${
-              isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-            }`}
+            className={`absolute top-0 right-0 w-[80%] max-w-sm h-full bg-linear-to-br from-[#8d6f23] to-[#212121] backdrop-blur-xl border-l border-[#AAD8FF1A] transition-transform duration-500 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+              }`}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex flex-col h-full pt-24 px-8">
@@ -130,11 +129,10 @@ const Navbar = () => {
                 {menuData.map((item, index) => (
                   <li
                     key={item.id}
-                    className={`transform transition-all duration-500 ease-out ${
-                      isMobileMenuOpen
-                        ? "translate-x-0 opacity-100"
-                        : "translate-x-20 opacity-0"
-                    }`}
+                    className={`transform transition-all duration-500 ease-out ${isMobileMenuOpen
+                      ? "translate-x-0 opacity-100"
+                      : "translate-x-20 opacity-0"
+                      }`}
                     style={{
                       transitionDelay: isMobileMenuOpen
                         ? `${index * 100}ms`
@@ -149,28 +147,34 @@ const Navbar = () => {
 
               {/* Mobile Connect Wallet Button */}
               <div
-                className={`mt-auto mb-10 transform transition-all duration-500 ease-out ${
-                  isMobileMenuOpen
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-10 opacity-0"
-                }`}
+                className={`mt-auto mb-10 transform transition-all duration-500 ease-out ${isMobileMenuOpen
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-10 opacity-0"
+                  }`}
                 style={{
                   transitionDelay: isMobileMenuOpen
                     ? `${menuData.length * 100}ms`
                     : "0ms",
                 }}
               >
-                <div className="flex md:hidden items-center gap-4">
+                <div className="flex flex-col md:hidden items-start w-full gap-2">
                   {address ? (
                     <>
-                      {" "}
+                      <Link to="/app/dashboard" className="w-full">
+                        <OutlineBtn title='Open App' className="w-full" />
+                      </Link>
+
                       <OutlineBtn
                         title={`${Number(tokenBalance.value).toFixed(4)} USDT`}
-                      />{" "}
-                      <ConnectButton
-                        label="Connect Wallet"
-                        showBalance={false}
+                        className='w-full'
                       />
+
+                      <div className="w-full">
+                        <ConnectButton
+                          label="Connect Wallet"
+                          showBalance={false}
+                        />
+                      </div>
                     </>
                   ) : (
                     <div className="custom-connect-btn border-primary border rounded-[10px] px-4 h-[50px] flex items-center justify-center gap-2 cursor-pointer">
