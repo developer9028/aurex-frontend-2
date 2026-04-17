@@ -6,6 +6,7 @@ import SingleMenu from "./SingleMenu";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { UseUserAccount } from "../../blockchain/hooks/UseUserAccount";
 import "./Navbar.css";
+import { Link } from "react-router";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -71,9 +72,9 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-4">
             {address ? (
               <>
-                <OutlineBtn
-                  title='Open App'
-                />
+                <Link to="/app/dashboard">
+                  <OutlineBtn title='Open App' />
+                </Link>
 
                 <OutlineBtn
                   title={`${Number(tokenBalance.value).toFixed(4)} USDT`}
@@ -156,21 +157,24 @@ const Navbar = () => {
                     : "0ms",
                 }}
               >
-                <div className="flex md:hidden items-center gap-4">
+                <div className="flex flex-col md:hidden items-start w-full gap-2">
                   {address ? (
                     <>
-                      <OutlineBtn
-                        title='Open App'
-                      />
+                      <Link to="/app/dashboard" className="w-full">
+                        <OutlineBtn title='Open App' className="w-full" />
+                      </Link>
 
                       <OutlineBtn
                         title={`${Number(tokenBalance.value).toFixed(4)} USDT`}
+                        className='w-full'
                       />
 
-                      <ConnectButton
-                        label="Connect Wallet"
-                        showBalance={false}
-                      />
+                      <div className="w-full">
+                        <ConnectButton
+                          label="Connect Wallet"
+                          showBalance={false}
+                        />
+                      </div>
                     </>
                   ) : (
                     <div className="custom-connect-btn border-primary border rounded-[10px] px-4 h-[50px] flex items-center justify-center gap-2 cursor-pointer">

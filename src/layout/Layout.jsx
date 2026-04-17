@@ -24,9 +24,10 @@ const Layout = () => {
     return (
         <>
             <div>
-                <Navbar />
+                {location.pathname.includes('/app') ? '' : <Navbar />}
                 <Outlet />
-                <Footer />
+                {location.pathname.includes('/app') ? '' : <Footer />}
+
             </div>
             <ToastContainer />
         </>

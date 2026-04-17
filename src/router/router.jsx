@@ -10,6 +10,9 @@ import AdminLayout from "../layout/AdminLayout";
 import AdminDashboard from "../pages/AdminDashboard/AdminDashboard";
 import AdminUpdate from "../pages/AdminUpdate/AdminUpdate";
 import Swap from "../pages/Swap/Swap";
+import AppLayout from "../layout/AppLayout";
+import StakeDashboard from "../pages/StakeDashboard/StakeDashboard";
+import SwapDashboard from "../pages/SwapDashboard/SwapDashboard";
 
 const router = createBrowserRouter([
     {
@@ -25,10 +28,6 @@ const router = createBrowserRouter([
                 element: <NodeSale />
             },
             {
-                path: "/dashboard",
-                element: <Dashboard />
-            },
-            {
                 path: "/stake",
                 element: <Stake />
             },
@@ -40,8 +39,24 @@ const router = createBrowserRouter([
                 path: "/rewards",
                 element: <Rewards />
             },
-
-
+            {
+                path: "/app",
+                element: <AppLayout />,
+                children: [
+                    {
+                        path: "dashboard",
+                        element: <Dashboard />
+                    },
+                    {
+                        path: "stake",
+                        element: <StakeDashboard />
+                    },
+                    {
+                        path: "swap",
+                        element: <SwapDashboard />
+                    },
+                ]
+            },
         ]
     },
     {
