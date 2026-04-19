@@ -121,7 +121,7 @@ const Swap = () => {
                     <div className="relative space-y-3">
                         <div className="rounded-[22px] border border-white/10 bg-[linear-gradient(102deg,rgba(212,159,18,0.24)_0%,rgba(35,37,43,0.7)_32%,rgba(18,18,20,0.92)_62%,rgba(16,16,16,0.96)_100%)] px-5 py-5 sm:px-7 sm:py-6">
                             <span className="font-sofia-medium text-xs uppercase tracking-[0.2em] text-white/75">Sell</span>
-                            <div className="mt-2 flex items-center justify-between gap-4">
+                            <div className="mt-2 flex flex-col lg:flex-row items-center justify-between gap-4">
                                 <input
                                     value={sellAmount}
                                     onChange={(e) => setSellAmount(e.target.value)}
@@ -141,7 +141,7 @@ const Swap = () => {
                                         <span className={`inline-flex h-7 w-7 items-center justify-center overflow-hidden rounded-full ${sellToken.bg}`}>
                                             <img src={sellToken.icon} alt={sellToken.symbol} className="h-full w-full object-cover" />
                                         </span>
-                                        <span className="font-sofia-medium text-[22px] sm:text-[24px]">{sellToken.symbol}</span>
+                                        <span className="font-sofia-medium text-[16px] lg:text-[22px] ">{sellToken.symbol}</span>
                                         <ChevronDown size={17} className={`text-white/85 transition ${isSellDropdownOpen ? 'rotate-180' : ''}`} />
                                     </button>
 
@@ -178,14 +178,14 @@ const Swap = () => {
                             </p>
                         </div>
 
-                        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[20px] border border-white/15 bg-[#3F4248]/90 p-4 shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
+                        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[20px] border border-white/15 bg-[#3F4248]/90 p-4 shadow-[0_12px_30px_rgba(0,0,0,0.4)] mt-6 lg:mt-0">
                             <ArrowUpDown size={30} className="text-white/90" />
                         </div>
 
                         <div className="rounded-[22px] border border-white/10 bg-[linear-gradient(102deg,rgba(212,159,18,0.2)_0%,rgba(35,37,43,0.65)_30%,rgba(18,18,20,0.92)_60%,rgba(16,16,16,0.96)_100%)] px-5 py-5 sm:px-7 sm:py-6">
                             <span className="font-sofia-medium text-xs uppercase tracking-[0.2em] text-white/75">Buy</span>
 
-                            <div className="mt-2 flex items-center justify-between gap-4">
+                            <div className="mt-2 flex flex-col lg:flex-row items-center justify-between gap-4">
                                 <p className="font-sofia-semibold text-5xl leading-none text-white">0.00</p>
 
                                 <div className="relative" ref={buyDropdownRef}>
@@ -204,7 +204,7 @@ const Swap = () => {
                                                 '?'
                                             )}
                                         </span>
-                                        <span className="font-sofia-medium text-[22px] sm:text-[25px]">{buyToken.symbol}</span>
+                                        <span className="font-sofia-medium text-[16px] lg:text-[22px]">{buyToken.symbol}</span>
                                         <ChevronDown size={17} className={`text-white/85 transition ${isBuyDropdownOpen ? 'rotate-180' : ''}`} />
                                     </button>
 
@@ -246,7 +246,7 @@ const Swap = () => {
                         type="button"
                         title="Get Started"
                         className="mt-6 h-14 w-full rounded-[16px] border border-[#F7C94A]/70 bg-[linear-gradient(180deg,#F2BE35_0%,#D49F12_100%)] shadow-[0_10px_24px_rgba(212,159,18,0.35)] transition hover:brightness-105"
-                        textClassName="text-[28px] font-sofia-bold"
+                        textClassName="text-[22px] font-sofia-bold"
                     />
                 </div>
             </div>
