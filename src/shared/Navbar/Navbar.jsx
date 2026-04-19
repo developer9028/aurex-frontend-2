@@ -70,12 +70,12 @@ const Navbar = () => {
 
           {/* Desktop btn  */}
           <div className="hidden md:flex items-center gap-4">
+            <Link to="/app/dashboard">
+              <OutlineBtn title='Open App' />
+            </Link>
+            
             {address ? (
               <>
-                <Link to="/app/dashboard">
-                  <OutlineBtn title='Open App' />
-                </Link>
-
                 <OutlineBtn
                   title={`${Number(tokenBalance.value).toFixed(4)} USDT`}
                 />
@@ -158,12 +158,11 @@ const Navbar = () => {
                 }}
               >
                 <div className="flex flex-col md:hidden items-start w-full gap-2">
+                  <Link to="/app/dashboard" className="w-full">
+                    <OutlineBtn title='Open App' className="w-full" />
+                  </Link>
                   {address ? (
                     <>
-                      <Link to="/app/dashboard" className="w-full">
-                        <OutlineBtn title='Open App' className="w-full" />
-                      </Link>
-
                       <OutlineBtn
                         title={`${Number(tokenBalance.value).toFixed(4)} USDT`}
                         className='w-full'

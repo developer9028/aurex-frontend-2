@@ -131,7 +131,7 @@ const Stake = () => {
 
                         <PrimaryBtn
                             type="button"
-                            title="Stake Mavro"
+                            title="Stake Aurex"
                             className="h-[58px] w-full rounded-[18px] bg-linear-to-r from-[#E2A81F] via-[#F4C33B] to-[#FFDD72] shadow-[0_16px_40px_rgba(242,190,53,0.35)] hover:brightness-105"
                             textClassName="text-[18px] font-sofia-bold text-black"
                         />
