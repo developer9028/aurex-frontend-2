@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Outlet } from "react-router";
 import AppSidebar from "../shared/AppSidebar/AppSidebar";
 import AppNavbar from "../shared/AppNavbar/AppNavbar";
+import { UseUserAccount } from "../blockchain/hooks/UseUserAccount";
 
 const AppLayout = () => {
     const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-
+  const { isConnected } = UseUserAccount();
     const handleMobileMenuClick = () => {
         setIsMobileSidebarOpen(true);
     };
@@ -36,7 +37,15 @@ const AppLayout = () => {
                 )}
 
                 <main className="flex-1 min-w-0 p-4 lg:p-6 xl:p-8">
+                {    isConnected ? 
                     <Outlet />
+                     : (
+    <div className="flex justify-center items-center h-screen">
+      <h2 className="text-white text-2xl">
+        Please connect your wallet to view the dashboard.
+      </h2>
+    </div>
+  )}
                 </main>
             </div>
         </div>
