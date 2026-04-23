@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { ArrowUpDown } from 'lucide-react';
 import coin01Icon from '../../assets/images/coin-01.png';
 import coin02Icon from '../../assets/images/coin-02.png';
@@ -45,13 +46,10 @@ const Swap = () => {
         ? `Swap fee: ${(Number(swapFeeBps) / 100).toFixed(2)}%`
         : null;
 
-    const buttonLabel = !isConnected
-        ? 'Connect Wallet'
-        : swapPhase === 'approving'
-        ? 'Approving ARX...'
-        : swapPhase === 'swapping'
-        ? 'Swapping...'
-        : 'Swap ARX → USDT';
+    const buttonLabel =
+        swapPhase === 'approving' ? 'Approving ARX...' :
+        swapPhase === 'swapping'  ? 'Swapping...'      :
+        'Swap ARX → USDT';
 
     return (
         <section className="relative isolate overflow-hidden min-h-screen px-4 py-24 sm:px-6 lg:px-8">
@@ -132,14 +130,28 @@ const Swap = () => {
                         </div>
                     </div>
 
-                    <PrimaryBtn
-                        type="button"
-                        onClick={() => swap(arxAmount, () => setArxAmount(''))}
-                        disabled={isLoading || !isConnected}
-                        title={buttonLabel}
-                        className="mt-6 h-14 w-full rounded-[16px] border border-[#F7C94A]/70 bg-[linear-gradient(180deg,#F2BE35_0%,#D49F12_100%)] shadow-[0_10px_24px_rgba(212,159,18,0.35)] transition hover:brightness-105 disabled:opacity-50 disabled:cursor-not-allowed"
-                        textClassName="text-[22px] font-sofia-bold"
-                    />
+                    {isConnected ? (
+                        <PrimaryBtn
+                            type="button"
+                            onClick={() => swap(arxAmount, () => setArxAmount(''))}
+                            disabled={isLoading}
+                            title={buttonLabel}
+                            className="mt-6 h-14 w-full rounded-[16px] border border-[#F7C94A]/70 bg-[linear-gradient(180deg,#F2BE35_0%,#D49F12_100%)] shadow-[0_10px_24px_rgba(212,159,18,0.35)] transition hover:brightness-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                            textClassName="text-[22px] font-sofia-bold"
+                        />
+                    ) : (
+                        <ConnectButton.Custom>
+                            {({ openConnectModal }) => (
+                                <button
+                                    type="button"
+                                    onClick={openConnectModal}
+                                    className="mt-6 h-14 w-full rounded-[16px] border border-[#F7C94A]/70 bg-[linear-gradient(180deg,#F2BE35_0%,#D49F12_100%)] shadow-[0_10px_24px_rgba(212,159,18,0.35)] transition hover:brightness-105 flex items-center justify-center cursor-pointer"
+                                >
+                                    <span className="text-[22px] font-sofia-bold text-black">Connect Wallet</span>
+                                </button>
+                            )}
+                        </ConnectButton.Custom>
+                    )}
                 </div>
             </div>
 

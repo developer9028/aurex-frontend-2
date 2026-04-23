@@ -22,6 +22,15 @@ export const UseStaking = () => {
     const pendingArgsRef = useRef(null);
     const [stakePhase, setStakePhase] = useState('idle'); // idle | approving | staking | done
 
+    // ── Read: USDT allowance ─────────────────────────────────────────────
+    const { data: usdtAllowance, refetch: refetchAllowance } = useReadContract({
+        address: appConfig.USDT_CONTRACT_ADDRESS,
+        abi: appConfig.TOKEN_ABI,
+        functionName: 'allowance',
+        args: [address, appConfig.STAKING_CONTRACT_ADDRESS],
+        query: { enabled: !!address && isConnected },
+    });
+
     // ── Read: USDT balance ────────────────────────────────────────────────
     const { data: usdtBalance, isLoading: isUsdtLoading, refetch: refetchUsdtBalance } = useReadContract({
         address: appConfig.USDT_CONTRACT_ADDRESS,
@@ -116,6 +125,7 @@ export const UseStaking = () => {
             setStakePhase('done');
             pendingArgsRef.current = null;
             refetchUsdtBalance();
+            refetchAllowance();
             refetchUserStakes();
             refetchRewards();
             setTimeout(() => setStakePhase('idle'), 2000);
@@ -291,16 +301,29 @@ export const UseStaking = () => {
 
         const amountBig = parseUnits(amountStr, appConfig.USDT_DECIMALS);
         pendingArgsRef.current = [amountBig, durationIndex, referrer];
-        setStakePhase('approving');
         toast.dismiss();
-        toast.loading('Approving USDT...');
 
-        writeApprove({
-            address: appConfig.USDT_CONTRACT_ADDRESS,
-            abi: appConfig.TOKEN_ABI,
-            functionName: 'approve',
-            args: [appConfig.STAKING_CONTRACT_ADDRESS, amountBig],
-        });
+        const currentAllowance = usdtAllowance ?? 0n;
+        if (currentAllowance >= amountBig) {
+            // Already approved — go straight to staking
+            setStakePhase('staking');
+            toast.loading('Staking in progress...');
+            writeStake({
+                address: appConfig.STAKING_CONTRACT_ADDRESS,
+                abi: appConfig.STAKING_ABI,
+                functionName: 'stakeWithUSDT',
+                args: pendingArgsRef.current,
+            });
+        } else {
+            setStakePhase('approving');
+            toast.loading('Approving USDT...');
+            writeApprove({
+                address: appConfig.USDT_CONTRACT_ADDRESS,
+                abi: appConfig.TOKEN_ABI,
+                functionName: 'approve',
+                args: [appConfig.STAKING_CONTRACT_ADDRESS, amountBig],
+            });
+        }
     };
 
     return {
