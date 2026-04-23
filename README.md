@@ -1,17 +1,13 @@
 # Aurex
+## Deployed testnet Contracts
 
-<div align="center">
-  
-  **A modern blockchain node management and staking platform**
-  
-  [![React](https://img.shields.io/badge/React-19.2.0-blue.svg)](https://reactjs.org/)
-  [![Vite](https://img.shields.io/badge/Vite-7.2.2-646CFF.svg)](https://vitejs.dev/)
-  [![TailwindCSS](https://img.shields.io/badge/Tailwind-4.1.17-38B2AC.svg)](https://tailwindcss.com/)
-  [![License](https://img.shields.io/badge/license-Private-red.svg)]()
+- **MockUSDT:** [0x8225838dd8f89960240d5553552a5c27e2bcc57b](https://testnet.bscscan.com/token/0x8225838dd8f89960240d5553552a5c27e2bcc57b)
 
-  🔗 [Live Demo](https://aurex-app.netlify.app/)
+- **AurexNode:** [0x5676ba67eae088d21e93654044114149fbe232ac](https://testnet.bscscan.com/address/0x5676ba67eae088d21e93654044114149fbe232ac)
 
-</div>
+- **AurexToken:** [0xbaF25B731D67Eb314FFecA04Db8A57b3f45bD8A2](https://testnet.bscscan.com/address/0xbaF25B731D67Eb314FFecA04Db8A57b3f45bD8A2)
+
+- **AurexStaking:** [0xf6c3f452d8dc225a67ec0cc3799efa4a8cab244a](https://testnet.bscscan.com/address/0xf6c3f452d8dc225a67ec0cc3799efa4a8cab244a)
 
 ---
 
