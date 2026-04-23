@@ -7,7 +7,7 @@
 
 - **AurexToken:** [0xbaF25B731D67Eb314FFecA04Db8A57b3f45bD8A2](https://testnet.bscscan.com/address/0xbaF25B731D67Eb314FFecA04Db8A57b3f45bD8A2)
 
-- **AurexStaking:** [0xf6c3f452d8dc225a67ec0cc3799efa4a8cab244a](https://testnet.bscscan.com/address/0xf6c3f452d8dc225a67ec0cc3799efa4a8cab244a)
+- **AurexStaking:** [0x8b71088aacf7cb893de9164708556ea88b690dea](https://testnet.bscscan.com/address/0x8b71088aacf7cb893de9164708556ea88b690dea)
 
 ---
 
