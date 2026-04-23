@@ -1,9 +1,19 @@
-export const STAKING_ABI = [
+export const STAKING_ABI =  [
         {
             "type": "constructor",
             "inputs": [
                 {
                     "name": "_owner",
+                    "type": "address",
+                    "internalType": "address"
+                },
+                {
+                    "name": "_usdtTokenAddress",
+                    "type": "address",
+                    "internalType": "address"
+                },
+                {
+                    "name": "_aurexTokenAddress",
                     "type": "address",
                     "internalType": "address"
                 }
@@ -157,6 +167,41 @@ export const STAKING_ABI = [
         },
         {
             "type": "function",
+            "name": "getAllRankConfigs",
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "tuple",
+                    "internalType": "struct AurexStaking.AllRankConfigs",
+                    "components": [
+                        {
+                            "name": "subCommunityThresholds",
+                            "type": "uint256[10]",
+                            "internalType": "uint256[10]"
+                        },
+                        {
+                            "name": "personalThresholds",
+                            "type": "uint256[10]",
+                            "internalType": "uint256[10]"
+                        },
+                        {
+                            "name": "rewardPcts",
+                            "type": "uint256[10]",
+                            "internalType": "uint256[10]"
+                        },
+                        {
+                            "name": "incomeCaps",
+                            "type": "uint256[10]",
+                            "internalType": "uint256[10]"
+                        }
+                    ]
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
             "name": "getAllStakedOfUser",
             "inputs": [
                 {
@@ -280,6 +325,49 @@ export const STAKING_ABI = [
         },
         {
             "type": "function",
+            "name": "getContractAddresses",
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "tuple",
+                    "internalType": "struct AurexStaking.ContractAddresses",
+                    "components": [
+                        {
+                            "name": "usdtToken",
+                            "type": "address",
+                            "internalType": "address"
+                        },
+                        {
+                            "name": "arxToken",
+                            "type": "address",
+                            "internalType": "address"
+                        },
+                        {
+                            "name": "feeWallet",
+                            "type": "address",
+                            "internalType": "address"
+                        }
+                    ]
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getMatchingBonusConfig",
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint256[6]",
+                    "internalType": "uint256[6]"
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
             "name": "getQuoteForSwapUSDTToARX",
             "inputs": [
                 {
@@ -293,6 +381,47 @@ export const STAKING_ABI = [
                     "name": "",
                     "type": "uint256",
                     "internalType": "uint256"
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getRankConfigByRank",
+            "inputs": [
+                {
+                    "name": "_rank",
+                    "type": "uint8",
+                    "internalType": "enum StakingStorage.Rank"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "tuple",
+                    "internalType": "struct StakingStorage.RankConfig",
+                    "components": [
+                        {
+                            "name": "subCommunityThreshold",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "personalThreshold",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "rewardPct",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "incomeCap",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        }
+                    ]
                 }
             ],
             "stateMutability": "view"
@@ -498,6 +627,46 @@ export const STAKING_ABI = [
         },
         {
             "type": "function",
+            "name": "getStakingConfig",
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "tuple",
+                    "internalType": "struct AurexStaking.StakingConfig",
+                    "components": [
+                        {
+                            "name": "durationDays",
+                            "type": "uint256[4]",
+                            "internalType": "uint256[4]"
+                        },
+                        {
+                            "name": "dailyRoiBps",
+                            "type": "uint256[4]",
+                            "internalType": "uint256[4]"
+                        },
+                        {
+                            "name": "maximumReferralDepth",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "arxPriceInUSDT",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "swapStartTime",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        }
+                    ]
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
             "name": "getSwapHistory",
             "inputs": [
                 {
@@ -568,6 +737,289 @@ export const STAKING_ABI = [
         },
         {
             "type": "function",
+            "name": "getUser",
+            "inputs": [
+                {
+                    "name": "_user",
+                    "type": "address",
+                    "internalType": "address"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "tuple",
+                    "internalType": "struct StakingStorage.UserInfo",
+                    "components": [
+                        {
+                            "name": "userAddress",
+                            "type": "address",
+                            "internalType": "address"
+                        },
+                        {
+                            "name": "referredBy",
+                            "type": "address",
+                            "internalType": "address"
+                        },
+                        {
+                            "name": "referrerList",
+                            "type": "address[]",
+                            "internalType": "address[]"
+                        },
+                        {
+                            "name": "directActiveReferralsCount",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "totalStakedInUSD",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "totalStakedByDirectReferralsInUSD",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "totalStakedByDirectReferralsInARX",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "communityPerformanceInUSD",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "totalStakedInARX",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "matchingReward",
+                            "type": "tuple",
+                            "internalType": "struct StakingStorage.RewardInfo",
+                            "components": [
+                                {
+                                    "name": "claimable",
+                                    "type": "uint256",
+                                    "internalType": "uint256"
+                                },
+                                {
+                                    "name": "claimed",
+                                    "type": "uint256",
+                                    "internalType": "uint256"
+                                },
+                                {
+                                    "name": "totalEarned",
+                                    "type": "uint256",
+                                    "internalType": "uint256"
+                                },
+                                {
+                                    "name": "rewardPercentage",
+                                    "type": "uint256",
+                                    "internalType": "uint256"
+                                },
+                                {
+                                    "name": "dailyRewardAmount",
+                                    "type": "uint256",
+                                    "internalType": "uint256"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "stakingReward",
+                            "type": "tuple",
+                            "internalType": "struct StakingStorage.RewardInfo",
+                            "components": [
+                                {
+                                    "name": "claimable",
+                                    "type": "uint256",
+                                    "internalType": "uint256"
+                                },
+                                {
+                                    "name": "claimed",
+                                    "type": "uint256",
+                                    "internalType": "uint256"
+                                },
+                                {
+                                    "name": "totalEarned",
+                                    "type": "uint256",
+                                    "internalType": "uint256"
+                                },
+                                {
+                                    "name": "rewardPercentage",
+                                    "type": "uint256",
+                                    "internalType": "uint256"
+                                },
+                                {
+                                    "name": "dailyRewardAmount",
+                                    "type": "uint256",
+                                    "internalType": "uint256"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "communityReward",
+                            "type": "tuple",
+                            "internalType": "struct StakingStorage.RewardInfo",
+                            "components": [
+                                {
+                                    "name": "claimable",
+                                    "type": "uint256",
+                                    "internalType": "uint256"
+                                },
+                                {
+                                    "name": "claimed",
+                                    "type": "uint256",
+                                    "internalType": "uint256"
+                                },
+                                {
+                                    "name": "totalEarned",
+                                    "type": "uint256",
+                                    "internalType": "uint256"
+                                },
+                                {
+                                    "name": "rewardPercentage",
+                                    "type": "uint256",
+                                    "internalType": "uint256"
+                                },
+                                {
+                                    "name": "dailyRewardAmount",
+                                    "type": "uint256",
+                                    "internalType": "uint256"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getUserActiveStakes",
+            "inputs": [
+                {
+                    "name": "_user",
+                    "type": "address",
+                    "internalType": "address"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "activeStakes",
+                    "type": "tuple[]",
+                    "internalType": "struct StakingStorage.StakeInfo[]",
+                    "components": [
+                        {
+                            "name": "amountInARX",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "amountInUSD",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "stakingStartedAt",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "stakingEndedAt",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "durationEnum",
+                            "type": "uint8",
+                            "internalType": "enum StakingStorage.StakingDuration"
+                        },
+                        {
+                            "name": "totalClaimableDays",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "claimedDays",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "bool",
+                            "internalType": "bool"
+                        },
+                        {
+                            "name": "isUnstaked",
+                            "type": "bool",
+                            "internalType": "bool"
+                        }
+                    ]
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getUserActiveStakesCount",
+            "inputs": [
+                {
+                    "name": "_user",
+                    "type": "address",
+                    "internalType": "address"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "count",
+                    "type": "uint256",
+                    "internalType": "uint256"
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getUserCommunityRewardState",
+            "inputs": [
+                {
+                    "name": "_user",
+                    "type": "address",
+                    "internalType": "address"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "tuple",
+                    "internalType": "struct AurexStaking.CommunityRewardState",
+                    "components": [
+                        {
+                            "name": "lastClaimedAt",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "earned",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "capInARX",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        }
+                    ]
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
             "name": "getUserRank",
             "inputs": [
                 {
@@ -581,6 +1033,213 @@ export const STAKING_ABI = [
                     "name": "",
                     "type": "uint8",
                     "internalType": "enum StakingStorage.Rank"
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getUserReferrerList",
+            "inputs": [
+                {
+                    "name": "_user",
+                    "type": "address",
+                    "internalType": "address"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "address[]",
+                    "internalType": "address[]"
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getUserStakeAtDuration",
+            "inputs": [
+                {
+                    "name": "_user",
+                    "type": "address",
+                    "internalType": "address"
+                },
+                {
+                    "name": "_duration",
+                    "type": "uint8",
+                    "internalType": "enum StakingStorage.StakingDuration"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "tuple",
+                    "internalType": "struct StakingStorage.StakeInfo",
+                    "components": [
+                        {
+                            "name": "amountInARX",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "amountInUSD",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "stakingStartedAt",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "stakingEndedAt",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "durationEnum",
+                            "type": "uint8",
+                            "internalType": "enum StakingStorage.StakingDuration"
+                        },
+                        {
+                            "name": "totalClaimableDays",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "claimedDays",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "bool",
+                            "internalType": "bool"
+                        },
+                        {
+                            "name": "isUnstaked",
+                            "type": "bool",
+                            "internalType": "bool"
+                        }
+                    ]
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getUserStakes",
+            "inputs": [
+                {
+                    "name": "_user",
+                    "type": "address",
+                    "internalType": "address"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "tuple[4]",
+                    "internalType": "struct StakingStorage.StakeInfo[4]",
+                    "components": [
+                        {
+                            "name": "amountInARX",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "amountInUSD",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "stakingStartedAt",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "stakingEndedAt",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "durationEnum",
+                            "type": "uint8",
+                            "internalType": "enum StakingStorage.StakingDuration"
+                        },
+                        {
+                            "name": "totalClaimableDays",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "claimedDays",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "isActive",
+                            "type": "bool",
+                            "internalType": "bool"
+                        },
+                        {
+                            "name": "isUnstaked",
+                            "type": "bool",
+                            "internalType": "bool"
+                        }
+                    ]
+                }
+            ],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getUserSwapHistory",
+            "inputs": [
+                {
+                    "name": "_user",
+                    "type": "address",
+                    "internalType": "address"
+                },
+                {
+                    "name": "_pageNumber",
+                    "type": "uint256",
+                    "internalType": "uint256"
+                },
+                {
+                    "name": "_itemCount",
+                    "type": "uint256",
+                    "internalType": "uint256"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "history",
+                    "type": "tuple[]",
+                    "internalType": "struct StakingStorage.SwapInfoHistory[]",
+                    "components": [
+                        {
+                            "name": "amountInARX",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "amountInUSD",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        },
+                        {
+                            "name": "swappedAt",
+                            "type": "uint256",
+                            "internalType": "uint256"
+                        }
+                    ]
+                },
+                {
+                    "name": "total",
+                    "type": "uint256",
+                    "internalType": "uint256"
                 }
             ],
             "stateMutability": "view"
