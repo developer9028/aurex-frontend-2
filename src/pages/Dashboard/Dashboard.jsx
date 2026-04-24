@@ -24,10 +24,12 @@ import {
 } from "../../components/lightswind/table";
 import { noteHistory } from "../../assets/mock/dashboardData";
 import { UseUserAccount } from "../../blockchain/hooks/UseUserAccount";
+import { UseStaking } from "../../blockchain/hooks/UseStaking";
 
 const Dashboard = () => {
   const [tab, setTab] = useState("nodeHistory");
   const [isCopy, setIsCopy] = useState(false);
+  const [isStakeCopy, setIsStakeCopy] = useState(false);
   const {
     address,
     userInfo,
@@ -50,11 +52,22 @@ const Dashboard = () => {
     isPaused,
   } = UseUserAccount();
 
+  const { userStakes } = UseStaking();
+  const hasEverStaked = userStakes.length > 0;
+
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text);
     setIsCopy(true);
     setTimeout(() => {
       setIsCopy(false);
+    }, 2000);
+  };
+
+  const handleStakeCopy = (text) => {
+    navigator.clipboard.writeText(text);
+    setIsStakeCopy(true);
+    setTimeout(() => {
+      setIsStakeCopy(false);
     }, 2000);
   };
 
@@ -71,10 +84,10 @@ const Dashboard = () => {
               className="w-full h-full object-contain"
             />
           </div>
-          <div className="w-full lg:w-4/12">
+          <div className="w-full lg:w-4/12 flex flex-col gap-5">
             <div className="border-[1px] border-[#F2BE3566] rounded-[12px] p-5 linear-bg-white box-shadow-yellow">
               <h2 className="text-[20px] lg:text-[32px] text-white font-sofia-semibold">
-                My Referral Link
+                My Node Sell Referral Link
               </h2>
               <div
                 className="mt-5 border-[1px] border-[#F2BE35] rounded-[16px] py-4 px-6 flex items-center gap-5 justify-between cursor-pointer"
@@ -126,6 +139,40 @@ const Dashboard = () => {
                   every successful referral
                 </p>
                 */}
+              </div>
+            </div>
+
+            {/* Staking Referral Link */}
+            <div className="border-[1px] border-[#F2BE3566] rounded-[12px] p-5 linear-bg-white box-shadow-yellow">
+              <h2 className="text-[20px] lg:text-[32px] text-white font-sofia-semibold">
+                My Staking Referral Link
+              </h2>
+              <div
+                className={`mt-5 border-[1px] border-[#F2BE35] rounded-[16px] py-4 px-6 flex items-center gap-5 justify-between ${
+                  hasEverStaked ? 'cursor-pointer' : 'cursor-default opacity-60'
+                }`}
+                onClick={() =>
+                  hasEverStaked && handleStakeCopy(`${base_url}/stake?stake-ref=${address}`)
+                }
+              >
+                <p className="text-white text-[16px] lg:text-[20px] font-sofia-normal">
+                  {hasEverStaked ? (
+                    <>
+                      {base_url}/stake?stake-ref={address?.slice(0, 6)}....{address?.slice(-4)}
+                    </>
+                  ) : (
+                    'You need to stake first'
+                  )}
+                </p>
+                {hasEverStaked && (
+                  <div>
+                    {isStakeCopy ? (
+                      <img src={tickIcon} alt="" className="size-[24px]" />
+                    ) : (
+                      <img src={copyImg} alt="" />
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>

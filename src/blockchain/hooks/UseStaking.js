@@ -190,7 +190,7 @@ export const UseStaking = () => {
             setStakePhase('idle');
             pendingArgsRef.current = null;
         }
-    }, [approveError]);
+    }, [approveError, stakePhase]);
 
     // ── Error: approve tx reverted on-chain ───────────────────────────────
     useEffect(() => {
@@ -201,7 +201,7 @@ export const UseStaking = () => {
             setStakePhase('idle');
             pendingArgsRef.current = null;
         }
-    }, [isApproveReverted]);
+    }, [isApproveReverted, stakePhase]);
 
     // ── Error: stake wallet rejected ──────────────────────────────────────
     useEffect(() => {
@@ -212,7 +212,7 @@ export const UseStaking = () => {
             setStakePhase('idle');
             pendingArgsRef.current = null;
         }
-    }, [stakeError]);
+    }, [stakeError, stakePhase]);
 
     // ── Error: stake tx reverted on-chain ─────────────────────────────────
     useEffect(() => {
@@ -223,7 +223,7 @@ export const UseStaking = () => {
             setStakePhase('idle');
             pendingArgsRef.current = null;
         }
-    }, [isStakeReverted]);
+    }, [isStakeReverted, stakePhase]);
 
     // ── Derived values ────────────────────────────────────────────────────
     const formattedUsdtBalance = usdtBalance != null

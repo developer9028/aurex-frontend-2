@@ -14,11 +14,17 @@ const Layout = () => {
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);
         const refCode = searchParams.get('ref');
+        const stakeRefCode = searchParams.get('stake-ref');
 
         if (refCode) {
             localStorage.setItem('ref', refCode);
             console.log('Referral code saved:', refCode);
         }
+        if(stakeRefCode){
+            localStorage.setItem('stake-ref', stakeRefCode);
+            console.log('Staking referral code saved:', stakeRefCode);
+        }
+          
     }, [location.search]);
 
     return (

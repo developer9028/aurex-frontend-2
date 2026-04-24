@@ -38,11 +38,12 @@ const Stake = () => {
         unstake,
     } = UseStaking();
 
-    const refParam = searchParams.get('ref') || '';
+    const refParam = searchParams.get('stake-ref') || '';
     const referrer = isAddress(refParam) ? refParam : zeroAddress;
 
     const handleMax = () => setAmount(formattedUsdtBalance);
     const handleStake = () => stake(amount, selectedDuration.durationIndex, referrer);
+    const referrerLabel = referrer !== zeroAddress ? `${referrer.slice(0, 6)}...${referrer.slice(-4)}` : null;
 
     const btnTitle =
         stakePhase === 'approving' ? 'Approving...' :
@@ -148,6 +149,12 @@ const Stake = () => {
                                 })}
                             </div>
                         </div>
+
+                        {referrerLabel && (
+                            <p className="text-sm text-white/60">
+                                Referral address: <span className="text-white">{referrerLabel}</span>
+                            </p>
+                        )}
 
                         {isConnected ? (
                             <PrimaryBtn
